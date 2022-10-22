@@ -1,8 +1,12 @@
 import "./App.css";
-import { HomePage } from "./pages/HomePage";
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from "./pages/Home/HomePage";
 import './asserts/styles/index.css';
 import { Navbar } from "./components/Navbar";
 import { useState } from "react";
+import { Paths } from "./enums/Path";
+import { MapPage } from "./pages/Map/MapPage";
+import { CapitalPage } from "./pages/Capital/CapitalPage";
 
 function App() {
   
@@ -10,7 +14,12 @@ function App() {
   return (
     <>
       <Navbar setForm={setLoginForm}/>
-      <HomePage loginForm={loginForm}  setForm={setLoginForm}/>
+      <Routes>
+      <Route path={Paths.Home} element={ <HomePage loginForm={loginForm}  setForm={setLoginForm}/>} />
+      <Route path={Paths.Map} element={ <MapPage/>} />
+      <Route path={Paths.Capital} element={ <CapitalPage/>} />
+      
+      </Routes>
     </>
   );
 }

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Card,
   Grid,
   IconButton,
   TextField,
@@ -9,9 +8,10 @@ import {
 } from "@mui/material";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import CloseIcon from "@mui/icons-material/Close";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import { AuthCard } from "./AuthCard";
+
 const SignUp = ({ setForm , handleSignIn}: any) => {
   const validationSchema = yup.object({
     fullname:yup
@@ -43,22 +43,7 @@ const SignUp = ({ setForm , handleSignIn}: any) => {
     },
   });
   return (
-    <Card
-      sx={{
-        backgroundColor: "#EEF2FF",
-        width: "410px",
-        borderRadius: "25px",
-      }}
-    >
-      <IconButton aria-label="delete" onClick={() => setForm((f: boolean) => !f)}>
-        <CloseIcon fontSize="inherit" />
-      </IconButton>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-      >
+    <AuthCard close={() => setForm((f: boolean) => !f)}>
         <form onSubmit={formik.handleSubmit} style={{margin : "auto 40px"}}>
           <Typography variant="h6" fontWeight="700" fontSize="35px" sx={{ marginBottom: 1 }} align="center">
             Sign up
@@ -134,8 +119,7 @@ const SignUp = ({ setForm , handleSignIn}: any) => {
           </IconButton>
         </Grid>
         <Button variant="text" onClick={()=>handleSignIn((f: boolean) => !f)}>I already have an account</Button>
-      </Grid>
-    </Card>
+      </AuthCard>
   );
 };
 
