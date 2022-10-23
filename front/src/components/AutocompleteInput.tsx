@@ -1,3 +1,4 @@
+import React from 'react';
 import Select from 'react-select';
 
 const options = [
@@ -6,29 +7,26 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+interface Props {
+  handleSelect: (newValue: any) => void;
+  savedLocation?: string;
+}
 
-  interface Props {
-    handleSelect: (newValue:any) => void;
-    savedLocation?: string;
-  }
-  
-  const AutocompleteInput = ({ handleSelect }: Props) => {
-    // const [inputValue, setInputValue] = useState("");
-  
-    
-  
-    return (
-      <div style={{width: "610px", margin: "50px auto", position: "relative"}} >
-        <Select
-          options={options}
-          placeholder="Search"
-          onChange={(newValue) => handleSelect(newValue)}
-          isMulti={false}
-          name="capitals"
-          inputId="capitals"
-        />
-      </div>
-    );
-  };
+const AutocompleteInput = ({ handleSelect }: Props) => {
+  // const [inputValue, setInputValue] = useState("");
 
-  export {AutocompleteInput};
+  return (
+    <div style={{ width: '610px', margin: '50px auto', position: 'relative' }}>
+      <Select
+        options={options}
+        placeholder="Search"
+        onChange={newValue => handleSelect(newValue)}
+        isMulti={false}
+        name="capitals"
+        inputId="capitals"
+      />
+    </div>
+  );
+};
+
+export { AutocompleteInput };

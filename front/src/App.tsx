@@ -1,25 +1,26 @@
-import "./App.css";
+import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from "./pages/Home/HomePage";
-import './asserts/styles/index.css';
-import { Navbar } from "./components/Navbar";
-import { useState } from "react";
-import { Paths } from "./enums/Path";
-import { MapPage } from "./pages/Map/MapPage";
-import { CapitalPage } from "./pages/Capital/CapitalPage";
+
+import './App.css';
+import { AuthModal } from './components/AuthModal';
+import { Navbar } from './components/Navbar/Navbar';
+import { ToggleSignInFormContext } from './contexts/SignInFormProvider';
+import { Paths } from './enums';
+import { CapitalPage } from './pages/Capital/CapitalPage';
+import { HomePage } from './pages/Home/HomePage';
+import { MapPage } from './pages/Map/MapPage';
 
 function App() {
-  
-  const [loginForm, setLoginForm] = useState<boolean>(false);
+  const { show } = useContext(ToggleSignInFormContext);
   return (
     <>
-      <Navbar setForm={setLoginForm}/>
+      <Navbar />
       <Routes>
-      <Route path={Paths.Home} element={ <HomePage loginForm={loginForm}  setForm={setLoginForm}/>} />
-      <Route path={Paths.Map} element={ <MapPage/>} />
-      <Route path={Paths.Capital} element={ <CapitalPage/>} />
-      
+        <Route path={Paths.Home} element={<HomePage />} />
+        <Route path={Paths.Map} element={<MapPage />} />
+        <Route path={Paths.Capital} element={<CapitalPage />} />
       </Routes>
+      {show && <AuthModal />}
     </>
   );
 }
