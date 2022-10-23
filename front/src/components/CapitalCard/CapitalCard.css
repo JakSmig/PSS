@@ -1,0 +1,6 @@
+.card {
+  transition: all 250ms ease-in-out;
+}
+.card:hover {
+  transform: translateY(-42px);
+}

@@ -1,16 +1,26 @@
-import "./App.css";
-import { HomePage } from "./pages/HomePage";
-import './asserts/styles/index.css';
-import { Navbar } from "./components/Navbar";
-import { useState } from "react";
+import React, { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import './App.css';
+import { AuthModal } from './components/AuthModal';
+import { Navbar } from './components/Navbar/Navbar';
+import { ToggleSignInFormContext } from './contexts/SignInFormProvider';
+import { Paths } from './enums';
+import { CapitalPage } from './pages/Capital/CapitalPage';
+import { HomePage } from './pages/Home/HomePage';
+import { MapPage } from './pages/Map/MapPage';
 
 function App() {
-  
-  const [loginForm, setLoginForm] = useState<boolean>(false);
+  const { show } = useContext(ToggleSignInFormContext);
   return (
     <>
-      <Navbar setForm={setLoginForm}/>
-      <HomePage loginForm={loginForm}  setForm={setLoginForm}/>
+      <Navbar />
+      <Routes>
+        <Route path={Paths.Home} element={<HomePage />} />
+        <Route path={Paths.Map} element={<MapPage />} />
+        <Route path={Paths.Capital} element={<CapitalPage />} />
+      </Routes>
+      {show && <AuthModal />}
     </>
   );
 }
