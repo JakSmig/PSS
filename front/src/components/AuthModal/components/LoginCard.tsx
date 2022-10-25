@@ -35,9 +35,8 @@ const LoginCard = () => {
       password: '',
     },
     validationSchema,
-    onSubmit: values => {
-      console.log(values);
-    },
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onSubmit: values => {},
   });
 
   return (
