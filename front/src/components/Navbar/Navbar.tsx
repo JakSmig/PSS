@@ -3,7 +3,7 @@ import { Button, Grid } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, Location } from 'react-router-dom';
 
 import './Navbar.css';
 
@@ -13,25 +13,47 @@ import { Paths } from '../../enums';
 
 const Navbar = () => {
   const { setShow } = useContext(ToggleSignInFormContext);
+  const location: Location = useLocation();
+  const isWithShadow: boolean = location.pathname === Paths.Map;
 
   return (
     <AppBar
       position="absolute"
-      style={{ background: 'transparent', boxShadow: 'none' }}
+      style={{
+        background: isWithShadow ? 'rgba(0,0,0,0.4)' : 'transparent',
+        boxShadow: 'none',
+      }}
     >
       <Grid container justifyContent="space-between">
+        <NavLink to={Paths.Home} className="nav-link">
+          <Grid display="flex" item alignItems="center">
+            <img
+              src={Logo}
+              alt="logo"
+              style={{ height: '50px', width: '50px', margin: '10px' }}
+            />
+            <Typography variant="h6" textTransform="uppercase">
+              Nazwa
+            </Typography>
+          </Grid>
+        </NavLink>
         <Grid display="flex" item alignItems="center">
-          <img
-            src={Logo}
-            alt="logo"
-            style={{ height: '50px', width: '50px', margin: '10px' }}
-          />
-          <Typography variant="h6" textTransform="uppercase">
-            Nazwa
-          </Typography>
-        </Grid>
-        <Grid display="flex" item alignItems="center">
-          <NavLink to={Paths.Map} className="nav-link">
+          <NavLink
+            to={Paths.Home}
+            className="nav-link"
+            style={({ isActive }) => ({
+              borderBottom: isActive ? '2px solid white' : 'none',
+            })}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to={Paths.Map}
+            className="nav-link"
+            style={({ isActive }) => ({
+              borderBottom: isActive ? '2px solid white' : 'none',
+            })}
+          >
             Map
           </NavLink>
           <Button
