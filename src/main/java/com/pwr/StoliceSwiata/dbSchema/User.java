@@ -15,6 +15,16 @@ public class User {
     private String email;
     private String sessiontoken;
 
+    public User(){
+
+    }
+    public User(String username, String password, String email){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.sessiontoken = "";
+    }
+
 
     public Integer getId() {
         return id;
@@ -28,7 +38,7 @@ public class User {
         return username;
     }
 
-    public void setName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
