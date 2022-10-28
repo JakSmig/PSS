@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/update")
-    public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken, @RequestParam String newUsername, @RequestParam String newPassword, @RequestParam String newEmail){
+    public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken, String newUsername, String newPassword, String newEmail){
         List<User> queryResult = userRepository.findByUsername(sessionToken);
         if(queryResult.size() == 1) {
             User mUser = queryResult.get(0);
