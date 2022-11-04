@@ -1,21 +1,25 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Capital {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
 
-    private String coordenates;
+    private String country;
+
+    private String coordinates;
 
     private String description;
 
-    private String flagLocation;
+    private String flaglocation;
 
     public Integer getId() {
         return id;
@@ -29,12 +33,20 @@ public class Capital {
         this.name = name;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getCoordenates() {
-        return coordenates;
+        return coordinates;
     }
 
     public void setCoordenates(String coordenates) {
-        this.coordenates = coordenates;
+        this.coordinates = coordenates;
     }
 
     public String getDescription() {
@@ -45,11 +57,11 @@ public class Capital {
         this.description = description;
     }
 
-    public String getFlagLocation() {
-        return flagLocation;
+    public String getFlaglocation() {
+        return flaglocation;
     }
 
-    public void setFlagLocation(String flagLocation) {
-        this.flagLocation = flagLocation;
+    public void setFlaglocation(String flaglocation) {
+        this.flaglocation = flaglocation;
     }
 }

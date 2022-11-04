@@ -8,11 +8,15 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useContext } from 'react';
 import * as yup from 'yup';
 
-import { SignInFormVariantContext } from '../../../contexts/SignInFormProvider';
+import {
+  SignInFormVariantContext,
+  ToggleSignInFormContext,
+} from '../../../contexts/SignInFormProvider';
 import { SignInVariant } from '../../../enums';
 
 const validationSchema = yup.object({
@@ -35,6 +39,7 @@ const validationSchema = yup.object({
 
 const SignUp = () => {
   const { setSignInVariant } = useContext(SignInFormVariantContext);
+  const { setShow } = useContext(ToggleSignInFormContext);
   const formik = useFormik({
     initialValues: {
       fullname: '',
@@ -44,7 +49,17 @@ const SignUp = () => {
     },
     validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      axios
+        .post(
+          `http://localhost:8080/user/add?username=${values.fullname}&email=${values.email}&password=${values.password}`,
+        )
+        .then(user => {
+          console.log(user.data);
+        })
+        .catch(() => {
+          console.log('error');
+        });
+      setShow(false);
     },
   });
 
@@ -89,6 +104,7 @@ const SignUp = () => {
         <Typography component="p">Create your password</Typography>
         <TextField
           id="password"
+          type="password"
           label="Password"
           variant="outlined"
           margin="normal"
@@ -102,6 +118,7 @@ const SignUp = () => {
         <TextField
           id="confpassword"
           label="Password"
+          type="password"
           variant="outlined"
           margin="normal"
           sx={{ width: '100%' }}

@@ -8,13 +8,17 @@ import { NavLink, useLocation, Location } from 'react-router-dom';
 import './Navbar.css';
 
 import Logo from '../../assets/images/logo.png';
+import { AuthContext } from '../../contexts/AuthProvider';
 import { ToggleSignInFormContext } from '../../contexts/SignInFormProvider';
 import { Paths } from '../../enums';
+import { AccountMenu } from './AccountMenu';
 
 const Navbar = () => {
   const { setShow } = useContext(ToggleSignInFormContext);
+  const { token } = useContext(AuthContext);
   const location: Location = useLocation();
-  const isWithShadow: boolean = location.pathname === Paths.Map;
+
+  const isWithShadow = location.pathname === Paths.Map;
 
   return (
     <AppBar
@@ -40,6 +44,7 @@ const Navbar = () => {
         <Grid display="flex" item alignItems="center">
           <NavLink
             to={Paths.Home}
+            end
             className="nav-link"
             style={({ isActive }) => ({
               borderBottom: isActive ? '2px solid white' : 'none',
@@ -56,26 +61,31 @@ const Navbar = () => {
           >
             Map
           </NavLink>
-          <Button
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={() => setShow(f => !f)}
-            color="inherit"
-          >
-            <Typography
-              component="p"
-              sx={{
-                marginRight: '10px',
-                fontSize: '24px',
-                display: 'inline-block',
-              }}
+          {token ? (
+            <AccountMenu />
+          ) : (
+            <Button
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={() => setShow(f => !f)}
+              color="inherit"
             >
-              Log In
-            </Typography>
-            <AccountCircle sx={{ height: '50px', width: '50px' }} />
-          </Button>
+              <Typography
+                component="div"
+                sx={{
+                  marginRight: '10px',
+                  fontSize: '24px',
+                  display: 'inline-block',
+                }}
+              >
+                Log In
+              </Typography>
+
+              <AccountCircle sx={{ height: '50px', width: '50px' }} />
+            </Button>
+          )}
         </Grid>
       </Grid>
     </AppBar>
