@@ -38,7 +38,7 @@ public class Capital {
     }
 
     public void setCountry(String country) {
-        country = country;
+        this.country = country;
     }
 
     public String getCoordenates() {
