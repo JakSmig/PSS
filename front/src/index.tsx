@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './index.css';
 
 import App from './App';
-import { ToggleSignInFormProvider } from './contexts/SignInFormProvider';
+import { AuthProvider } from './contexts/AuthProvider';
+import {
+  SignInFormVariantProvider,
+  ToggleSignInFormProvider,
+} from './contexts/SignInFormProvider';
+import { Paths } from './enums';
+import { CapitalPage } from './pages/Capital/CapitalPage';
+import { HomePage } from './pages/Home/HomePage';
+import { MapPage } from './pages/Map/MapPage';
+import { ProfilePage } from './pages/Profile/ProfilePage';
 import reportWebVitals from './reportWebVitals';
 
 const queryClient = new QueryClient();
@@ -18,10 +27,22 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ToggleSignInFormProvider>
-          <App />
+          <SignInFormVariantProvider>
+            <AuthProvider>
+              <Routes>
+                <Route path="/" element={<App />}>
+                  <Route index element={<HomePage />} />
+                  <Route path={Paths.Map} element={<MapPage />} />
+                  <Route path={Paths.Capital} element={<CapitalPage />} />
+                  <Route path={Paths.Profile} element={<ProfilePage />} />
+                </Route>
+              </Routes>
+            </AuthProvider>
+          </SignInFormVariantProvider>
         </ToggleSignInFormProvider>
       </BrowserRouter>
     </QueryClientProvider>
+    ,
   </React.StrictMode>,
 );
 
