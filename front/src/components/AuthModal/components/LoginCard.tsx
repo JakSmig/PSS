@@ -8,11 +8,16 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import axios from 'axios';
 import { useFormik } from 'formik';
-import React, { useContext } from 'react';
+import React, { useContext, SetStateAction } from 'react';
 import * as yup from 'yup';
 
-import { SignInFormVariantContext } from '../../../contexts/SignInFormProvider';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import {
+  SignInFormVariantContext,
+  ToggleSignInFormContext,
+} from '../../../contexts/SignInFormProvider';
 import { SignInVariant } from '../../../enums';
 
 const validationSchema = yup.object({
@@ -28,15 +33,30 @@ const validationSchema = yup.object({
 
 const LoginCard = () => {
   const { setSignInVariant } = useContext(SignInFormVariantContext);
-
+  const { setToken } = useContext(AuthContext);
+  const { setShow } = useContext(ToggleSignInFormContext);
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onSubmit: values => {},
+    onSubmit: values => {
+      axios
+        .post(
+          `http://localhost:8080/user/login?email=${values.email}&password=${values.password}`,
+        )
+        .then(user => {
+          if (typeof user.data === 'string') {
+            setToken(user.data);
+          }
+        })
+        .catch(() => {
+          console.log('error');
+        });
+
+      setShow(false);
+    },
   });
 
   return (
@@ -68,6 +88,7 @@ const LoginCard = () => {
         <TextField
           id="password"
           label="Password"
+          type="password"
           variant="outlined"
           margin="normal"
           sx={{ width: '100%' }}
@@ -101,7 +122,11 @@ const LoginCard = () => {
       </Grid>
       <Button variant="text">Forgot your password?</Button>
       <Typography>
-        <Button onClick={() => setSignInVariant(SignInVariant.SignUp)}>
+        <Button
+          onClick={() => {
+            setSignInVariant(SignInVariant.SignUp);
+          }}
+        >
           Sign up
         </Button>
         if you dont&apos;t have an account yet

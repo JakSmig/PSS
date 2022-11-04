@@ -2,6 +2,7 @@ export enum Paths {
   Home = '/',
   Capital = '/capital/:capital',
   Map = '/map',
+  Profile = '/profile',
 }
 
 export enum SignInVariant {
