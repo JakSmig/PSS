@@ -1,95 +1,92 @@
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Button, Grid } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import React, { useContext } from 'react';
-import { NavLink, useLocation, Location } from 'react-router-dom';
+import { ConsoleSqlOutlined, SmileOutlined } from "@ant-design/icons";
+import { Button, Dropdown, MenuProps, Space, Typography } from "antd";
+import { Header } from "antd/lib/layout/layout";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Paths } from "../../enums";
+import { useStore } from "../../hooks/useStore";
+import { ModalCard } from "../ModalCard/ModalCard";
+import "./Navbar.less";
 
-import './Navbar.css';
-
-import Logo from '../../assets/images/logo.png';
-import { AuthContext } from '../../contexts/AuthProvider';
-import { ToggleSignInFormContext } from '../../contexts/SignInFormProvider';
-import { Paths } from '../../enums';
-import { AccountMenu } from './AccountMenu';
 
 const Navbar = () => {
-  const { setShow } = useContext(ToggleSignInFormContext);
-  const { token } = useContext(AuthContext);
-  const location: Location = useLocation();
-
-  const isWithShadow = location.pathname === Paths.Map;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { token, setToken } = useStore();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const hideModal = () => {
+    setIsModalOpen(false);
+  };
+  const items: MenuProps["items"] = [
+    {
+      label: <NavLink to={Paths.Profile}>My profile</NavLink>,
+      key: "0",
+    },
+    {
+      label: <Button onClick={()=>setToken("")}>Log out</Button>,
+      key: "1",
+    },
+  ];
 
   return (
-    <AppBar
-      position="absolute"
-      style={{
-        background: isWithShadow ? 'rgba(0,0,0,0.4)' : 'transparent',
-        boxShadow: 'none',
-      }}
-    >
-      <Grid container justifyContent="space-between">
-        <NavLink to={Paths.Home} className="nav-link">
-          <Grid display="flex" item alignItems="center">
-            <img
-              src={Logo}
-              alt="logo"
-              style={{ height: '50px', width: '50px', margin: '10px' }}
+    <>
+      <Header
+        style={{
+          backgroundColor: "transparent",
+          borderBottom: "1px solid #fff",
+          position: "sticky",
+          display: "flex",
+          justifyContent: "center",
+          zIndex:2,
+          alignItems: "center",
+        }}
+      >
+        <Space
+          style={{
+            justifyContent: "space-between",
+            width: "1200px",
+          }}
+        >
+          <NavLink to={Paths.Home} end className="nav-link">
+            <ConsoleSqlOutlined
+              style={{ fontSize: "50px", color: "#fff", marginTop: "15px" }}
             />
-            <Typography variant="h6" textTransform="uppercase">
-              Nazwa
-            </Typography>
-          </Grid>
-        </NavLink>
-        <Grid display="flex" item alignItems="center">
-          <NavLink
-            to={Paths.Home}
-            end
-            className="nav-link"
-            style={({ isActive }) => ({
-              borderBottom: isActive ? '2px solid white' : 'none',
-            })}
-          >
-            Home
           </NavLink>
-          <NavLink
-            to={Paths.Map}
-            className="nav-link"
-            style={({ isActive }) => ({
-              borderBottom: isActive ? '2px solid white' : 'none',
-            })}
-          >
-            Map
-          </NavLink>
-          {token ? (
-            <AccountMenu />
-          ) : (
-            <Button
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={() => setShow(f => !f)}
-              color="inherit"
+          <Space>
+            <NavLink
+              to={Paths.Home}
+              end
+              className="nav-link"
+              style={({ isActive }) => ({
+                borderBottom: isActive ? "2px solid #1DA57A" : "none",
+                color: isActive ? "#1DA57A" : "white",
+              })}
             >
-              <Typography
-                component="div"
-                sx={{
-                  marginRight: '10px',
-                  fontSize: '24px',
-                  display: 'inline-block',
-                }}
-              >
-                Log In
-              </Typography>
-
-              <AccountCircle sx={{ height: '50px', width: '50px' }} />
-            </Button>
-          )}
-        </Grid>
-      </Grid>
-    </AppBar>
+              Home
+            </NavLink>
+            <NavLink
+              to={Paths.Map}
+              className="nav-link"
+              style={({ isActive }) => ({
+                borderBottom: isActive ? "2px solid #1DA57A" : "none",
+                color: isActive ? "#1DA57A" : "white",
+              })}
+            >
+              Map
+            </NavLink>
+            {token ?
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <SmileOutlined style={{ fontSize: "30px" }} />
+            </Dropdown> :
+            <Typography.Text className="login-button" onClick={showModal}>
+              LOG IN
+            </Typography.Text>}
+          </Space>
+        </Space>
+      </Header>
+      {isModalOpen && <ModalCard close={hideModal} />}
+    </>
   );
 };
-
 export { Navbar };
