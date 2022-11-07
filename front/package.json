@@ -3,45 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "11.10.4",
-    "@emotion/styled": "11.10.4",
-    "@material-ui/core": "4.12.4",
-    "@mui/icons-material": "5.10.6",
-    "@mui/material": "5.10.8",
-    "@mui/styles": "5.10.10",
+    "@ant-design/icons": "4.7.0",
+    "@craco/craco": "6.4.5",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "13.5.0",
     "@types/jest": "27.5.2",
-    "@types/node": "16.11.64",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "@types/react-leaflet": "2.8.2",
-    "axios": "^1.1.3",
-    "formik": "2.2.9",
+    "@types/node": "16.18.3",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "antd": "4.24.1",
+    "axios": "1.1.3",
+    "craco-less": "2.0.0",
+    "leaflet": "1.9.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-leaflet": "4.1.0",
-    "react-material-ui-carousel": "3.4.2",
-    "react-query": "^3.39.2",
-    "react-router-dom": "6.4.2",
+    "react-query": "3.39.2",
+    "react-router-dom": "6.4.3",
     "react-scripts": "5.0.1",
-    "react-select": "5.5.2",
+    "typescript": "4.8.4",
     "web-vitals": "2.1.4",
-    "yup": "0.32.11"
+    "zustand": "4.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext .ts --fix"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "vazco/typescript"
+      "react-app/jest"
     ]
   },
   "browserslist": {
@@ -57,22 +51,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "7.14.6",
-    "@babel/eslint-parser": "7.14.7",
-    "@babel/eslint-plugin": "7.14.5",
-    "@babel/preset-react": "7.14.5",
-    "@typescript-eslint/eslint-plugin": "5.27.0",
-    "@typescript-eslint/parser": "5.27.0",
-    "eslint": "8.16.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-config-vazco": "7.0.0",
-    "eslint-plugin-eslint-comments": "3.2.0",
-    "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.30.0",
-    "eslint-plugin-react-hooks": "4.5.0",
-    "prettier": "2.6.2",
-    "typescript": "4.7.2"
+    "@types/leaflet": "1.9.0"
   }
 }
