@@ -33,7 +33,7 @@ public class UserController {
         //newUser.setPassword(password);
         //newUser.setEmail(email);
         userRepository.save(newUser);
-        return new ResponseEntity<String>("User added", HttpStatus.OK);
+        return  loginUser(email, password); //new ResponseEntity<String>("User added", HttpStatus.OK);
     }
 
     @PostMapping(path = "/update")
