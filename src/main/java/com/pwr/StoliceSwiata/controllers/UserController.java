@@ -45,10 +45,10 @@ public class UserController {
                 mUser.setUsername(newUsername);
             }
             if(!(newPassword == null || newPassword.equals("") )){
-                mUser.setUsername(newPassword);
+                mUser.setPassword(newPassword);
             }
             if(!(newEmail == null || newEmail.equals("") )){
-                mUser.setUsername(newEmail);
+                mUser.setEmail(newEmail);
             }
             userRepository.save(mUser);
             return new ResponseEntity<>("User update", HttpStatus.OK);
