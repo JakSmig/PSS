@@ -38,8 +38,10 @@ def removeTranslations(str):
     return ret
 
 if __name__ == "__main__":
-    data = 'C:/Users/Konra/Desktop/listOfCapitals.txt'
-    dest = 'c:/Users/Konra/Desktop/BD.txt'
+    data = './listOfCapitals.txt'
+    dest = './BD.txt'
+    dest.seek(0)
+    dest.truncate()
     capitals = importData(data)
     i = 0
     for capital in capitals:
