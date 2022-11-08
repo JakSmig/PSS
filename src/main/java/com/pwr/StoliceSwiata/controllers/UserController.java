@@ -38,18 +38,19 @@ public class UserController {
 
     @PostMapping(path = "/update")
     public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken, String newUsername, String newPassword, String newEmail){
-        List<User> queryResult = userRepository.findByUsername(sessionToken);
-        if(queryResult.size() == 1) {
+        List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
+        if(queryResult.size() > 0) {
             User mUser = queryResult.get(0);
-            if(!newUsername.equals("")){
+            if(!(newUsername == null || newUsername.equals("") )){
                 mUser.setUsername(newUsername);
             }
-            if(!newPassword.equals("")){
+            if(!(newPassword == null || newPassword.equals("") )){
                 mUser.setUsername(newPassword);
             }
-            if(!newEmail.equals("")){
+            if(!(newEmail == null || newEmail.equals("") )){
                 mUser.setUsername(newEmail);
             }
+            userRepository.save(mUser);
             return new ResponseEntity<>("User update", HttpStatus.OK);
         }
         else{

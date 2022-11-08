@@ -1,11 +1,9 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class Capital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
