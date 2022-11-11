@@ -15,6 +15,7 @@ public class Capital {
 
     private String coordinates;
 
+    @Column(length = 10000)
     private String description;
 
     private String flaglocation;

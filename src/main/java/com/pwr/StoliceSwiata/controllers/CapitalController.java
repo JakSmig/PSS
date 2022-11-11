@@ -49,6 +49,10 @@ public class CapitalController {
                                                            @RequestParam String country,
                                                            @RequestParam String description,
                                                            String coordinates){
+        List<Capital> queryResult = capitalRepository.findByCountry(country);
+        if(queryResult.size() > 0){
+            return new ResponseEntity<String>("Country already has assigned capital", HttpStatus.BAD_REQUEST);
+        }
         Capital nCapital = new Capital();
         nCapital.setName(name);
         nCapital.setCountry(country);

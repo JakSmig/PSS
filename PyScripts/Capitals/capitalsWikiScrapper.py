@@ -1,6 +1,8 @@
 import wikipedia
 import re
+import json
 
+writeToJson = []
 
 def importData(file):
     capitals = []
@@ -19,6 +21,10 @@ def saveData(file, capital, summary):
     file.write(summary)
     file.write("\n")
     file.write("\n")
+    sp = re.split('\t', capital)
+    #finalS = "(\'" + sp[0] + "\', \'" + sp[1] + "\', \'" + summary + "\')\n"
+    writeToJson.append({'capital': sp[0], 'country':sp[1], 'description':summary})
+
 
 def removeTranslations(str):
     ret = ''
@@ -38,13 +44,13 @@ def removeTranslations(str):
     return ret
 
 if __name__ == "__main__":
-    data = './listOfCapitals.txt'
-    dest = './BD.txt'
-    dest.seek(0)
-    dest.truncate()
+    data = 'listOfCapitals.txt'
+    dest = 'BD.txt'
     capitals = importData(data)
     i = 0
     for capital in capitals:
         print(capital)
         sum = removeTranslations(wikipedia.summary(capital + ' capital'))
         saveData(dest, capital, sum)
+    with open("capdata.json", "w") as outfile:
+        outfile.write(json.dumps(writeToJson, indent=4))

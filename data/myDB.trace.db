@@ -1,4 +1,4 @@
-10-28 00:55:28 jdbc[2]: exception
+11-11 13:34:51 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Kolumna "min_value" nie istnieje
 Column "min_value" not found [42122-148]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
@@ -43,4 +43,4 @@ Column "min_value" not found [42122-148]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.pwr.StoliceSwiata.StoliceSwiataApplication.main(StoliceSwiataApplication.java:10)
+	at com.pwr.StoliceSwiata.StoliceSwiataApplication.main(StoliceSwiataApplication.java:17)
