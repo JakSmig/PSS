@@ -9,10 +9,13 @@ public class Capital {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     private String name;
 
+    @Column(unique = true)
     private String country;
 
+    @Column
     private String coordinates;
 
     @Column(length = 10000)
