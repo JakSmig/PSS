@@ -2,6 +2,7 @@ package com.pwr.StoliceSwiata.dataLoaders;
 
 import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
 import com.pwr.StoliceSwiata.controllers.CapitalController;
+import com.pwr.StoliceSwiata.controllers.UserController;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -33,9 +34,13 @@ public class JsonLoader {
     @Autowired
     private CapitalController capitalController;
 
+    @Autowired
+    private UserController userController;
+
 
     public void loadDataFromJSONs(){
         loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/capdata.json")));
+        loadDataToUsers(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/userDataInit.json")));
     }
     private JSONArray extractJSONArrayFromResource(Resource resource){
         try{
@@ -71,6 +76,22 @@ public class JsonLoader {
             }
         }
         System.out.println("{LOCAL DATA LOADING}      Added " + String.valueOf(addedCounter) + " capitals to the database");
+
+    }
+
+    private void loadDataToUsers(JSONArray usersArray){
+        System.out.println("{LOCAL DATA LOADING}      Loading users data");
+        int addedCounter = 0;
+        for (int i = 0; i < usersArray.length(); i++) {
+            JSONObject user = usersArray.getJSONObject(i);
+            ResponseEntity response = userController.addUser(user.getString("username"),
+                                                                user.getString("password"),
+                                                                user.getString("email"));
+            if(response.getStatusCode() == HttpStatus.OK){
+                addedCounter++;
+            }
+        }
+        System.out.println("{LOCAL DATA LOADING}      Added " + String.valueOf(addedCounter) + " users to the database");
 
     }
 
