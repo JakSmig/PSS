@@ -67,8 +67,8 @@ public class JsonLoader {
         int addedCounter = 0;
         for (int i = 0; i < capitalsArray.length(); i++) {
             JSONObject cap = capitalsArray.getJSONObject(i);
-            ResponseEntity response = capitalController.addCapital(cap.getString("capital"),
-                                                                    cap.getString("country"),
+            ResponseEntity response = capitalController.addCapital(cap.getString("country"),
+                                                                    cap.getString("capital"),
                                                                     cap.getString("description"),
                                                                     "");
             if(response.getStatusCode() == HttpStatus.OK){
