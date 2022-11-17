@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    azure:
+      storage:
+        blob:
+          account-name: pwrzpipss
+          account-key: fdpNAiF083H1U28CQwIzCZdCIvgGRvOC3T1WEIIuVeFDfUTwqZBrNDj+udRBInHdtTgUBIk+3ALt+AStlq8vOg==
+          endpoint: https://pwrzpipss.blob.core.windows.net/
