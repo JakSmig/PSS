@@ -50,11 +50,19 @@ public class CommentController{
     @PostMapping(path="/addbyuser")
     public @ResponseBody ResponseEntity<String> addCommentToCapital(@RequestParam String capital,
                                                                     @RequestParam String sessionToken,
+                                                                    String optionalUsername,
                                                                     @RequestParam String text,
                                                                     @RequestParam float rating_food,
                                                                     @RequestParam float rating_atraction,
                                                                     @RequestParam float rating_general,
                                                                     @RequestParam float rating_transport){
+        if(optionalUsername != null){
+            List<User> findSession = userRepository.findByUsername(optionalUsername);
+            if(findSession.size() > 0 ){
+                sessionToken = findSession.get(0).getSessiontoken();
+            }
+        }
+
         List<Capital> queryCapital = capitalRepository.findByName(capital);
         if(queryCapital.size() == 0) {
             return new ResponseEntity<String>("No capital", HttpStatus.BAD_REQUEST);
@@ -63,9 +71,15 @@ public class CommentController{
         if(queryUser.size() == 0) {
             return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
         }
-        Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_atraction, rating_general, rating_transport);
-        commentRepository.save(newComment);
-        return new ResponseEntity<>("Comment added", HttpStatus.OK);
+        List<Comment> queryComments = commentRepository.findByUserAndCapital(queryUser.get(0), queryCapital.get(0));
+        if(queryCapital.size() == 0){
+            Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_atraction, rating_general, rating_transport);
+            commentRepository.save(newComment);
+            return new ResponseEntity<>("Comment added", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("User already commented under capital", HttpStatus.BAD_REQUEST);
+        }
+
 
     }
 

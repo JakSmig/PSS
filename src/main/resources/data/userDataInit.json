@@ -8,5 +8,15 @@
     "username": "TestUser2",
     "password": "pass",
     "email": "Test2@t.pl"
+  },
+  {
+    "username": "TestUser3",
+    "password": "pass",
+    "email": "Test3@t.pl"
+  },
+  {
+    "username": "TestUserWithReallyLongNameDunnoIfIShouldPutAConstrainOnThis -Also some other random sings !@#$%^&*()",
+    "password": "pass",
+    "email": "Test4@t.pl"
   }
 ]
