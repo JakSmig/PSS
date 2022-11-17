@@ -1,4 +1,4 @@
-Afghanistan	Kabul
+Afghanistan	Kabul - 
 Albania	Tirana 
 Algeria	Algiers
 Andorra	Andorra la Vella
@@ -161,7 +161,7 @@ Sierra Leone	Freetown
 Singapore	Singapore
 Slovakia	Bratislava
 Slovenia	Ljubljana
-Solomon Islands	Honiara
+Solomon Islands	Honiara - https://ucarecdn.com/2f470c5c-3f51-499b-b97a-55477880f711
 Somalia	Mogadishu
 South Africa	Pretoria, Bloemfontein, Cape Town
 South Korea	Seoul
