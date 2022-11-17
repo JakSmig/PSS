@@ -36,8 +36,8 @@ public class CommentController{
 
     //Getters
     @GetMapping(path="/allforcapital")
-    public @ResponseBody Iterable<Comment> getCommentsForCapitalOfCountry(@RequestParam String countryName){
-        List<Capital> queryCapital = capitalRepository.findByCountry(countryName);
+    public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName){
+        List<Capital> queryCapital = capitalRepository.findByName(capitalName);
         if(queryCapital.size() == 0) {
             return new ArrayList<Comment>();
         }
