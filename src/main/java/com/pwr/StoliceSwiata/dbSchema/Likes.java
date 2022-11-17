@@ -19,6 +19,19 @@ public class Likes {
     @Column
     private Integer value;
 
+    public Likes(){}
+
+    public Likes(User user, Comment comment, int value){
+        this.user = user;
+        this.comment = comment;
+        this.value = value;
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
     public User getUser() {
         return user;
     }
@@ -30,7 +43,6 @@ public class Likes {
     public Integer getValue() {
         return value;
     }
-
 
     public void setValue(Integer value) {
         this.value = value;

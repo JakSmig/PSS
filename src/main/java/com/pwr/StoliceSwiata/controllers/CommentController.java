@@ -68,29 +68,45 @@ public class CommentController{
         return new ResponseEntity<>("Comment added", HttpStatus.OK);
 
     }
-    /*
-    @PostMapping(path = "/like")
-    public @ResponseBody ResponseEntity likeComment(@RequestParam Integer commentID, @RequestParam String sessionToken, @RequestParam int value){
+
+    @PostMapping(path = "/likechange")
+    public @ResponseBody ResponseEntity changeLikeValueInComment(@RequestParam Integer commentID, @RequestParam String sessionToken, @RequestParam int value){
+        //Checks
+        if(value > 1 || value < -1){
+            return new ResponseEntity<String>("Value should be between 1 and -1", HttpStatus.BAD_REQUEST);
+        }
         Optional<Comment> queryComments = commentRepository.findById(commentID);
         if(queryComments.isEmpty()){
             return new ResponseEntity<String>("No comment", HttpStatus.BAD_REQUEST);
         }
-        Comment com = queryComments.get();
-
         List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
         if(queryUser.size() == 0) {
             return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
         }
 
+        Comment com = queryComments.get();
         List<Likes> queryLikes = likesRepository.findByCommentAndUser(com, queryUser.get(0));
         if(queryLikes.size() > 0){
-
+            int previousLikeValue = queryLikes.get(0).getValue();
             queryLikes.get(0).setValue(value);
-            int currentValue = com.getLikeRatio();
+            int currentComValue = com.getLikeRatio();
+            com.setLikeRatio(currentComValue - previousLikeValue + value);
 
+            commentRepository.save(com);
+            if(value == 0){
+                likesRepository.deleteById(queryLikes.get(0).getId());
+            }else{
+                likesRepository.save(queryLikes.get(0));
+            }
+
+            return new ResponseEntity("Edited like value", HttpStatus.OK);
+        }else{
+            //value wont be 0
+            likesRepository.save(new Likes(queryUser.get(0), queryComments.get(), value));
+            com.setLikeRatio(com.getLikeRatio() + value);
+            commentRepository.save(com);
+            return new ResponseEntity("Created new like value", HttpStatus.OK);
         }
-
-
-    }*/
+    }
 
 }
