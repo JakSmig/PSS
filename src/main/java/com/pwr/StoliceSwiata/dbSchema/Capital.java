@@ -1,6 +1,7 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,6 +22,9 @@ public class Capital {
     @Column(length = 10000)
     private String description;
 
+    @OneToMany(mappedBy = "capital")
+    private List<Comment> commentList;
+    @Column
     private String flaglocation;
 
     public Integer getId() {
@@ -57,6 +61,10 @@ public class Capital {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
     }
 
     public String getFlaglocation() {

@@ -12,11 +12,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
 
-    @Column
-    private Integer capitalId;
+    @ManyToOne
+    @JoinColumn(name = "capital")
+    private Capital capital;
 
     @Column(length = 1000)
     private String cText;
@@ -26,7 +28,16 @@ public class Comment {
     private Timestamp creationTime;
 
     @Column
-    private Float rating;
+    private Float rating_food;
+
+    @Column
+    private Float rating_transport;
+
+    @Column
+    private Float rating_atraction;
+
+    @Column
+    private Float rating_general;
 
     @Column
     private Integer likeRatio;
@@ -34,30 +45,30 @@ public class Comment {
     @Column
     private String imageLocation;
 
+    @Transient
+    public int likedByCurrentUser;
+
     public Comment(){
 
     }
-    public Comment(int userId, int capitalId, String text){
-        this.userId = userId;
-        this.capitalId = capitalId;
+    public Comment(User user, Capital capital, String text, float rating_food, float rating_atraction, float rating_general, float rating_transport){ //, Float rating_food, String rating_transport){
+        this.user = user;
+        this.capital = capital;
         this.cText = text;
+        this.rating_food = rating_food;
+        this.rating_atraction = rating_atraction;
+        this.rating_general = rating_general;
+        this.rating_transport = rating_transport;
+        this.likeRatio = 0;
     }
     public Integer getId() {
         return id;
     }
-    public Integer getUserId() {
-        return userId;
+    public String getUser() {
+        return user.getUsername();
     }
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getCapitalId() {
-        return capitalId;
-    }
-
-    public void setCapitalId(Integer capitalId) {
-        this.capitalId = capitalId;
+    public String getCapital() {
+        return capital.getName();
     }
 
     public String getcText() {
@@ -72,12 +83,36 @@ public class Comment {
         return creationTime;
     }
 
-    public Float getRating() {
-        return rating;
+    public Float getRating_food() {
+        return rating_food;
     }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
+    public void setRating_food(Float rating_food) {
+        this.rating_food = rating_food;
+    }
+
+    public Float getRating_transport() {
+        return rating_transport;
+    }
+
+    public void setRating_transport(Float rating_transport) {
+        this.rating_transport = rating_transport;
+    }
+
+    public Float getRating_atraction() {
+        return rating_atraction;
+    }
+
+    public void setRating_atraction(Float rating_atraction) {
+        this.rating_atraction = rating_atraction;
+    }
+
+    public Float getRating_general() {
+        return rating_general;
+    }
+
+    public void setRating_general(Float rating_general) {
+        this.rating_general = rating_general;
     }
 
     public Integer getLikeRatio() {

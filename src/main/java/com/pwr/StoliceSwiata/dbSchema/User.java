@@ -2,7 +2,7 @@ package com.pwr.StoliceSwiata.dbSchema;
 
 import javax.persistence.*;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Table
 public class User {
     @Id

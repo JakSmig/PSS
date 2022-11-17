@@ -17,11 +17,11 @@ import java.util.List;
 public class CapitalController {
     @Autowired
     private CapitalRepository capitalRepository;
-    @GetMapping(path="/get/all")
+    @GetMapping(path="/all")
     public @ResponseBody Iterable<Capital> getAllCapitals() {
         return capitalRepository.findAll();
     }
-    @GetMapping(path="/get/country")
+    @GetMapping(path="/country")
     public @ResponseBody ResponseEntity getByCountry(@RequestParam String country) {
         List<Capital> queryResult = capitalRepository.findByCountry(country);
         if(queryResult.size() > 0) {
@@ -32,7 +32,7 @@ public class CapitalController {
             return new ResponseEntity<String>("No such country", HttpStatus.BAD_REQUEST);
         }
     }
-    @GetMapping(path="/get/name")
+    @GetMapping(path="/name")
     public @ResponseBody ResponseEntity getByName(@RequestParam String name) {
         List<Capital> queryResult = capitalRepository.findByName(name);
         if(queryResult.size() > 0) {

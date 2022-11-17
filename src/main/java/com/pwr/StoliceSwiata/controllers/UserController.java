@@ -59,13 +59,13 @@ public class UserController {
     }
 
     //###GETS   in futere strip password
-    @GetMapping(path="/get/all")
+    @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
 
-    @GetMapping(path = "/get/bysession")
+    @GetMapping(path = "/bysession")
     public @ResponseBody ResponseEntity<User> getBySession(@RequestParam String sessionToken){
         List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
         if(queryResult.size() == 1) {
@@ -76,7 +76,7 @@ public class UserController {
         }
 
     }
-    @GetMapping(path = "/get/username")
+    @GetMapping(path = "/username")
     public @ResponseBody ResponseEntity<User> getByUsername(@RequestParam String username){
         List<User> queryResult = userRepository.findByUsername(username);
         if(queryResult.size() == 1) {

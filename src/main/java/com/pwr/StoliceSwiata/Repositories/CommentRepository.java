@@ -1,5 +1,6 @@
 package com.pwr.StoliceSwiata.Repositories;
 
+import com.pwr.StoliceSwiata.dbSchema.Capital;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
-    public List<Comment> findByCapitalId(int capitalId);
+    public List<Comment> findByCapital(Capital capital);
+    public List<Comment> findById(int id);
 
 }
