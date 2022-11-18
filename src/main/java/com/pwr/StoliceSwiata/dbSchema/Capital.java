@@ -24,8 +24,11 @@ public class Capital {
 
     @OneToMany(mappedBy = "capital")
     private List<Comment> commentList;
+
     @Column
     private String flaglocation;
+
+    private String currency;
 
     public Integer getId() {
         return id;
@@ -73,5 +76,13 @@ public class Capital {
 
     public void setFlaglocation(String flaglocation) {
         this.flaglocation = flaglocation;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
