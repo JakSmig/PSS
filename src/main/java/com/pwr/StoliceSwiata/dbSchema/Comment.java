@@ -34,7 +34,7 @@ public class Comment {
     private Float rating_transport;
 
     @Column
-    private Float rating_atraction;
+    private Float rating_attraction;
 
     @Column
     private Float rating_general;
@@ -51,12 +51,12 @@ public class Comment {
     public Comment(){
 
     }
-    public Comment(User user, Capital capital, String text, float rating_food, float rating_atraction, float rating_general, float rating_transport){ //, Float rating_food, String rating_transport){
+    public Comment(User user, Capital capital, String text, float rating_food, float rating_attraction, float rating_general, float rating_transport){ //, Float rating_food, String rating_transport){
         this.user = user;
         this.capital = capital;
         this.cText = text;
         this.rating_food = rating_food;
-        this.rating_atraction = rating_atraction;
+        this.rating_attraction = rating_attraction;
         this.rating_general = rating_general;
         this.rating_transport = rating_transport;
         this.likeRatio = 0;
@@ -99,12 +99,12 @@ public class Comment {
         this.rating_transport = rating_transport;
     }
 
-    public Float getRating_atraction() {
-        return rating_atraction;
+    public Float getRating_attraction() {
+        return rating_attraction;
     }
 
-    public void setRating_atraction(Float rating_atraction) {
-        this.rating_atraction = rating_atraction;
+    public void setRating_attraction(Float rating_attraction) {
+        this.rating_attraction = rating_attraction;
     }
 
     public Float getRating_general() {

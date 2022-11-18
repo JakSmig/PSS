@@ -53,7 +53,7 @@ public class CommentController{
                                                                     String optionalUsername,
                                                                     @RequestParam String text,
                                                                     @RequestParam float rating_food,
-                                                                    @RequestParam float rating_atraction,
+                                                                    @RequestParam float rating_attraction,
                                                                     @RequestParam float rating_general,
                                                                     @RequestParam float rating_transport){
         if(optionalUsername != null){
@@ -72,8 +72,8 @@ public class CommentController{
             return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
         }
         List<Comment> queryComments = commentRepository.findByUserAndCapital(queryUser.get(0), queryCapital.get(0));
-        if(queryCapital.size() == 0){
-            Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_atraction, rating_general, rating_transport);
+        if(queryCapital.size() != 0){
+            Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_attraction, rating_general, rating_transport);
             commentRepository.save(newComment);
             return new ResponseEntity<>("Comment added", HttpStatus.OK);
         }else{
