@@ -50,7 +50,7 @@ public class JsonLoader {
 
 
     public void loadDataFromJSONs(){
-        loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/capdata.json")));
+        loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/fullcapdata.json")));
         loadDataToUsers(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/userDataInit.json")));
         loadCommentsAndLikesFromJson(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/commentTestData.json")));
     }
@@ -79,10 +79,11 @@ public class JsonLoader {
         int addedCounter = 0;
         for (int i = 0; i < capitalsArray.length(); i++) {
             JSONObject cap = capitalsArray.getJSONObject(i);
-            ResponseEntity response = capitalController.addCapital(cap.getString("country"),
-                                                                    cap.getString("capital"),
+            ResponseEntity response = capitalController.addCapital(cap.getString("capital"),
+                                                                    cap.getString("country"),
                                                                     cap.getString("description"),
-                                                                    "");
+                                                                    cap.getString("coordinates"),
+                                                                    cap.getString("currency"));
             if(response.getStatusCode() == HttpStatus.OK){
                 addedCounter++;
             }

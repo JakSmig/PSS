@@ -48,7 +48,8 @@ public class CapitalController {
     public @ResponseBody ResponseEntity<String> addCapital(@RequestParam String name,
                                                            @RequestParam String country,
                                                            @RequestParam String description,
-                                                           String coordinates){
+                                                           String coordinates,
+                                                           String currency){
         List<Capital> queryResult = capitalRepository.findByCountry(country);
         if(queryResult.size() > 0){
             return new ResponseEntity<String>("Country already has assigned capital", HttpStatus.BAD_REQUEST);
@@ -58,6 +59,7 @@ public class CapitalController {
         nCapital.setCountry(country);
         nCapital.setDescription(description);
         nCapital.setCoordenates(coordinates);
+        nCapital.setCurrency(currency);
 
         capitalRepository.save(nCapital);
         return new ResponseEntity<>("Capital added", HttpStatus.OK);
