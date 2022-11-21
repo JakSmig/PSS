@@ -130,4 +130,8 @@ public class Comment {
     public void setImageLocation(String imageLocation) {
         this.imageLocation = imageLocation;
     }
+
+    public void setLikedByCurrentUser(int likedByCurrentUser) {
+        this.likedByCurrentUser = likedByCurrentUser;
+    }
 }

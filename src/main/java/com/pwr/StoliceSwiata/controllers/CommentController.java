@@ -36,15 +36,25 @@ public class CommentController{
 
     //Getters
     @GetMapping(path="/allforcapital")
-    public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName){
+    public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName, String optionalSessionToken){
         List<Capital> queryCapital = capitalRepository.findByName(capitalName);
         if(queryCapital.size() == 0) {
             return new ArrayList<Comment>();
         }
-        //List<Comment> queryComments = commentRepository.findByCapitalId(queryCapital.get(0).getId());
-        //System.out.println("Return query of size: " + String.valueOf(queryComments.size()));
-        //System.out.println(queryComments.get(0).get);
-        return commentRepository.findByCapital(queryCapital.get(0));
+        List<Comment> commentList = commentRepository.findByCapital(queryCapital.get(0));
+        if(optionalSessionToken != null){
+            List<User> queryUser = userRepository.findBySessiontoken(optionalSessionToken);
+            if(queryUser.size()>0){
+                User mUser = queryUser.get(0);
+                for (Comment comment : commentList) {
+                    List<Likes> queryLikes = likesRepository.findByCommentAndUser(comment, mUser);
+                    if (queryLikes.size() > 0) {
+                        comment.setLikedByCurrentUser(queryLikes.get(0).getValue());
+                    }
+                }
+            }
+        }
+        return commentList;
     }
     //Posters
     @PostMapping(path="/addbyuser")
