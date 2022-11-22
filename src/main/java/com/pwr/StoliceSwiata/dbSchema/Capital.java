@@ -25,8 +25,8 @@ public class Capital {
     @OneToMany(mappedBy = "capital")
     private List<Comment> commentList;
 
-    @Column
-    private String flaglocation;
+    @OneToOne
+    private Images flaglocation;
 
     private String currency;
 
@@ -70,11 +70,11 @@ public class Capital {
         return commentList;
     }
 
-    public String getFlaglocation() {
+    public Images getFlaglocation() {
         return flaglocation;
     }
 
-    public void setFlaglocation(String flaglocation) {
+    public void setFlaglocation(Images flaglocation) {
         this.flaglocation = flaglocation;
     }
 

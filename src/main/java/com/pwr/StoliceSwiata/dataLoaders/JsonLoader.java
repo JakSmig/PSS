@@ -2,11 +2,13 @@ package com.pwr.StoliceSwiata.dataLoaders;
 
 import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
 import com.pwr.StoliceSwiata.Repositories.CommentRepository;
+import com.pwr.StoliceSwiata.Repositories.ImagesRepository;
 import com.pwr.StoliceSwiata.Repositories.UserRepository;
 import com.pwr.StoliceSwiata.controllers.CapitalController;
 import com.pwr.StoliceSwiata.controllers.CommentController;
 import com.pwr.StoliceSwiata.controllers.UserController;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
+import com.pwr.StoliceSwiata.dbSchema.Images;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,10 +49,12 @@ public class JsonLoader {
     private UserRepository userRepository;
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private ImagesRepository imagesRepository;
 
 
     public void loadDataFromJSONs(){
-        loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/fullcapdata.json")));
+        loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/fullcapdata.json")),extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/flags.json")));
         loadDataToUsers(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/userDataInit.json")));
         loadCommentsAndLikesFromJson(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/commentTestData.json")));
     }
@@ -74,15 +78,31 @@ public class JsonLoader {
         return resourceLoader.getResource(path);
     }
 
-    private void loadDataToCapitals(JSONArray capitalsArray){
+    private void loadDataToCapitals(JSONArray capitalsArray, JSONArray flagsArray){
         System.out.println("{LOCAL DATA LOADING}      Loading capitals data");
         int addedCounter = 0;
         for (int i = 0; i < capitalsArray.length(); i++) {
             JSONObject cap = capitalsArray.getJSONObject(i);
+            Images img = null;
+            for(int j=0; j<flagsArray.length(); j++){
+                JSONObject flag = flagsArray.getJSONObject(j);
+                //System.out.println(flag);
+                //System.out.println(cap.getString("country"));
+                if(cap.getString("country").equals(flag.getString("Country"))){
+                    //System.out.println("mached");
+                    //System.out.println(flag.getString("country"));
+                    //Mached flag with capital
+                    img = new Images("flag/"+cap.getString("country"), flag.getString("b64"));
+                    imagesRepository.save(img);
+
+                }
+            }
+
             ResponseEntity response = capitalController.addCapital(cap.getString("capital"),
                                                                     cap.getString("country"),
                                                                     cap.getString("description"),
                                                                     cap.getString("coordinates"),
+                                                                    img,
                                                                     cap.getString("currency"));
             if(response.getStatusCode() == HttpStatus.OK){
                 addedCounter++;

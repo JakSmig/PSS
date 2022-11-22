@@ -18,16 +18,19 @@ def decode(string, filename):
 
 
 if __name__ == '__main__':
-    path = "C:/Users/Konra/Desktop/flags/"
+    path = "./flags/"
     data = []
     for file in os.listdir(path):
         filename = file[8:]
+        filename = filename[:-4]
+
         if "the_" in filename and "_the" not in filename:
             filename = filename[4:]
         filename = filename.replace('_', ' ')
         data.append({
             "Country": str(filename),
-            "b64": encode("C:/Users/Konra/Desktop/flags/" + file)
+            "b64": encode("./flags/" + file)
         })
+
     with open('flags.json', 'w') as f:
         json.dump(data, f)

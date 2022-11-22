@@ -2,6 +2,7 @@ package com.pwr.StoliceSwiata.controllers;
 
 import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
 import com.pwr.StoliceSwiata.dbSchema.Capital;
+import com.pwr.StoliceSwiata.dbSchema.Images;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,7 @@ public class CapitalController {
                                                            @RequestParam String country,
                                                            @RequestParam String description,
                                                            String coordinates,
+                                                           Images flag,
                                                            String currency){
         List<Capital> queryResult = capitalRepository.findByCountry(country);
         if(queryResult.size() > 0){
@@ -59,6 +61,7 @@ public class CapitalController {
         nCapital.setCountry(country);
         nCapital.setDescription(description);
         nCapital.setCoordenates(coordinates);
+        nCapital.setFlaglocation(flag);
         nCapital.setCurrency(currency);
 
         capitalRepository.save(nCapital);
