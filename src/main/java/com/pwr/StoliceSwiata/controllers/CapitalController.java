@@ -2,6 +2,7 @@ package com.pwr.StoliceSwiata.controllers;
 
 import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
 import com.pwr.StoliceSwiata.dbSchema.Capital;
+import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.Images;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @Controller
@@ -44,7 +47,42 @@ public class CapitalController {
             return new ResponseEntity<String>("No such capital", HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping(path="/average")
+    public @ResponseBody ResponseEntity getAverageRatingByName(@RequestParam String name){
+        List<Capital> queryResult = capitalRepository.findByName(name);
+        if(queryResult.size() > 0) {
+            List<Comment> comments = queryResult.get(0).getCommentList();
+            float r_food_sum = 0;
+            float r_transport_sum = 0;
+            float r_attractions_sum = 0;
+            float r_general_sum = 0;
+            float com_size = comments.size();
+            if(com_size>0){
+                for(Comment comment : comments){
+                    r_food_sum += comment.getRating_food();
+                    r_transport_sum += comment.getRating_transport();
+                    r_attractions_sum += comment.getRating_attraction();
+                    r_general_sum += comment.getRating_general();
+                }
+                r_food_sum /= com_size;
+                r_transport_sum /= com_size;
+                r_attractions_sum /= com_size;
+                r_general_sum /= com_size;
+            }
+            Map<String, Float> response_body = new HashMap<>();
+            response_body.put("rating_food_avg", r_food_sum);
+            response_body.put("rating_transport_avg", r_transport_sum);
+            response_body.put("rating_attraction_avg", r_attractions_sum);
+            response_body.put("rating_general_avg", r_general_sum);
 
+
+            return new ResponseEntity<>(response_body, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<String>("No such capital", HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
     @PostMapping(path = "/add")
     public @ResponseBody ResponseEntity<String> addCapital(@RequestParam String name,
