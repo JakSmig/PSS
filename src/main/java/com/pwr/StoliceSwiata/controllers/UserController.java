@@ -21,7 +21,7 @@ public class UserController {
 
     // Check on frontend?
     @PostMapping(path = "/add")
-    public @ResponseBody ResponseEntity<String> addUser(@RequestParam String username, @RequestParam String password, @RequestParam String email){
+    public @ResponseBody ResponseEntity<String> addUser(@RequestBody String username, @RequestBody String password, @RequestBody String email){
         if(userRepository.findByEmail(email).size()>0){
             return new ResponseEntity<String>("Email already used", HttpStatus.CONFLICT);
         }
@@ -37,7 +37,10 @@ public class UserController {
     }
 
     @PostMapping(path = "/update")
-    public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken, String newUsername, String newPassword, String newEmail){
+    public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken,
+                                                           @RequestBody(required = false) String newUsername,
+                                                           @RequestBody(required = false) String newPassword,
+                                                           @RequestBody(required = false) String newEmail){
         List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
         if(queryResult.size() > 0) {
             User mUser = queryResult.get(0);
@@ -61,7 +64,6 @@ public class UserController {
     //###GETS   in futere strip password
     @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
 

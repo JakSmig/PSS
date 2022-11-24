@@ -45,10 +45,11 @@ public class CapitalController {
         }
     }
 
+
     @PostMapping(path = "/add")
     public @ResponseBody ResponseEntity<String> addCapital(@RequestParam String name,
                                                            @RequestParam String country,
-                                                           @RequestParam String description,
+                                                           @RequestBody String description,
                                                            String coordinates,
                                                            Images flag,
                                                            String currency){

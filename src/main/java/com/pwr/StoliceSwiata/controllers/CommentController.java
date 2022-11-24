@@ -60,8 +60,8 @@ public class CommentController{
     @PostMapping(path="/addbyuser")
     public @ResponseBody ResponseEntity<String> addCommentToCapital(@RequestParam String capital,
                                                                     @RequestParam String sessionToken,
-                                                                    String optionalUsername,
-                                                                    @RequestParam String text,
+                                                                    @RequestParam(required = false) String optionalUsername,
+                                                                    @RequestBody String text,
                                                                     @RequestParam float rating_food,
                                                                     @RequestParam float rating_attraction,
                                                                     @RequestParam float rating_general,
