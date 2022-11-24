@@ -1,13 +1,11 @@
 package com.pwr.StoliceSwiata.controllers;
 
-import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
-import com.pwr.StoliceSwiata.Repositories.CommentRepository;
-import com.pwr.StoliceSwiata.Repositories.LikesRepository;
-import com.pwr.StoliceSwiata.Repositories.UserRepository;
+import com.pwr.StoliceSwiata.Repositories.*;
 import com.pwr.StoliceSwiata.dbSchema.Capital;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.Likes;
 import com.pwr.StoliceSwiata.dbSchema.User;
+import com.pwr.StoliceSwiata.DTOs.CommentPOSTdto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +32,9 @@ public class CommentController{
     @Autowired
     private LikesRepository likesRepository;
 
+    @Autowired
+    private ImagesRepository imagesRepository;
+
     //Getters
     @GetMapping(path="/allforcapital")
     public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName, String optionalSessionToken){
@@ -58,6 +59,36 @@ public class CommentController{
     }
     //Posters
     @PostMapping(path="/addbyuser")
+    public @ResponseBody ResponseEntity<String> addCommentToCapitalNew(@RequestBody CommentPOSTdto comment){
+
+
+        List<Capital> queryCapital = capitalRepository.findByName(comment.capitalName);
+        if(queryCapital.size() == 0) {
+            return new ResponseEntity<String>("No capital", HttpStatus.BAD_REQUEST);
+        }
+        Capital capital = queryCapital.get(0);
+
+        List<User> queryUser = userRepository.findBySessiontoken(comment.sessionId);
+        if(queryUser.size() == 0) {
+            return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
+        }
+        User user = queryUser.get(0);
+
+        List<Comment> queryComments = commentRepository.findByUserAndCapital(user, capital);
+        System.out.println(comment.image);
+        System.out.println(comment.image.getValue());
+
+        if(queryCapital.size() != 0){
+            Comment newComment = new Comment(user, capital, comment.c_text, comment.rating_food, comment.rating_attraction, comment.rating_general, comment.rating_transport);
+            if(!comment.image.getValue().equals("")){
+                newComment.setImageLocation(imagesRepository.save(comment.image));
+            }
+            commentRepository.save(newComment);
+            return new ResponseEntity<>("Comment added", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("User already commented under capital", HttpStatus.BAD_REQUEST);
+        }
+    }
     public @ResponseBody ResponseEntity<String> addCommentToCapital(@RequestParam String capital,
                                                                     @RequestParam String sessionToken,
                                                                     @RequestParam(required = false) String optionalUsername,

@@ -42,8 +42,8 @@ public class Comment {
     @Column
     private Integer likeRatio;
 
-    @Column
-    private String imageLocation;
+    @OneToOne
+    private Images image;
 
     @Transient
     public int likedByCurrentUser;
@@ -51,7 +51,7 @@ public class Comment {
     public Comment(){
 
     }
-    public Comment(User user, Capital capital, String text, float rating_food, float rating_attraction, float rating_general, float rating_transport){ //, Float rating_food, String rating_transport){
+    public Comment(User user, Capital capital, String text, float rating_food, float rating_attraction, float rating_general, float rating_transport){
         this.user = user;
         this.capital = capital;
         this.cText = text;
@@ -123,12 +123,12 @@ public class Comment {
         this.likeRatio = likeRatio;
     }
 
-    public String getImageLocation() {
-        return imageLocation;
+    public Images getImageLocation() {
+        return image;
     }
 
-    public void setImageLocation(String imageLocation) {
-        this.imageLocation = imageLocation;
+    public void setImageLocation(Images image) {
+        this.image = image;
     }
 
     public void setLikedByCurrentUser(int likedByCurrentUser) {
