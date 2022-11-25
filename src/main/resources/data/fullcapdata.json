@@ -7,7 +7,7 @@
         "currency": "AFN"
     },
     {
-        "capital": "Tirana ",
+        "capital": "Tirana",
         "country": "Albania",
         "description": "Tirana  is the capital and largest city of Albania. It is located in the centre of the country, enclosed by mountains and hills with Dajti rising to the east and a slight valley to the northwest overlooking the Adriatic Sea in the distance. Due to its location at the Plain of Tirana and the close proximity to the Mediterranean Sea, the city is particularly influenced by a Mediterranean seasonal climate. It is among the wettest and sunniest cities in Europe, with 2,544 hours of sun per year.Tirana was founded as a city in 1614 by the Ottoman Albanian general Sylejman Pasha Bargjini and flourished by then around the Old Mosque and the t\u00fcrbe. The area that today corresponds to the city's territory has been continuously inhabited since the Iron Age. It was inhabited by Illyrians, and was most likely the core of the Illyrian Kingdom of the Taulantii, which in Classical Antiquity was centred in the hinterland of Epidamnus. Following the Illyrian Wars it was annexed by Rome and became an integral part of the Roman Empire. The heritage of that period is still evident and represented by the Mosaics of Tirana. Later, in the 5th and 6th centuries, an Early Christian basilica was built around this site.\nAfter the Roman Empire split into East and West in the 4th century, its successor the Byzantine Empire took control over most of Albania, and built the Petrel\u00eb Castle in the reign of Justinian I. The city was fairly unimportant until the 20th century, when the Congress of Lushnj\u00eb proclaimed it as Albania's capital, after the Albanian Declaration of Independence in 1912.\nClassified as a gamma-world-city, Tirana is the most important economic, financial, political and trade centre in Albania due to its significant location in the centre of the country and its modern air, maritime, rail and road transportation. It is the seat of power of the Government of Albania, with the official residences of the President and Prime Minister of Albania, and the Parliament of Albania. The city was announced as the European Youth Capital for 2022.",
         "coordinates": "(41.31666667, 19.816667)",
@@ -35,11 +35,11 @@
         "currency": "AOA"
     },
     {
-        "capital": "Port Saint Johns",
-        "country": "Antigua",
+        "capital": "Saint Johns",
+        "country": "Antigua and Barbuda",
         "description": "St. John's is the capital and largest city of Antigua and Barbuda, part of the West Indies in the Caribbean Sea. With a population of 22,219, St. John's is the commercial centre of the nation and the chief port of the island of Antigua.",
-        "coordinates": "",
-        "currency": ""
+        "coordinates": "(17.11666667, -61.85)",
+        "currency": "XCD"
     },
     {
         "capital": "Buenos Aires",
@@ -270,14 +270,14 @@
         "country": "Democratic Republic of the Congo",
         "description": "Article 2 of the Constitution of the Democratic Republic of the Congo divides the country into the capital city of Kinshasa and 25 named provinces. It also gives the capital the status of a province.  Therefore, in many contexts Kinshasa is regarded as the 26th province.",
         "coordinates": "(-4.316666667, 15.3)",
-        "currency": ""
+        "currency": "CDF"
     },
     {
         "capital": "Brazzaville",
-        "country": "Republic of the Congo",
+        "country": "Congo",
         "description": "Brazzaville  is the capital and largest city of the Republic of the Congo . Constituting the financial and administrative centre of the country, it is located on the north side of the Congo River, opposite Kinshasa, the capital city of the Democratic Republic of the Congo .\nThe population of the capital is estimated to exceed 1.8 million residents, comprising more than a third of the national populace. Some 40% are employed in non-agricultural professions. During World War II, Brazzaville was also the capital of Free France between 1940 and 1942.\nIn 2013, Brazzaville was designated a City of Music by UNESCO; since then it has also been a member of the Creative Cities Network.",
         "coordinates": "(-4.25, 15.283333)",
-        "currency": ""
+        "currency": "XAF"
     },
     {
         "capital": "San Jose",
@@ -288,10 +288,10 @@
     },
     {
         "capital": "Yamoussoukro",
-        "country": "Cote d'Ivoire ",
+        "country": "Ivory Coast",
         "description": "Yamoussoukro  is the de jure capital of Ivory Coast and an autonomous district. As of the 2014 census, Yamoussoukro is the fifth most populous city in Ivory Coast with a population of 212,670. Located 240 kilometers  north-west of Abidjan, the district of Yamoussoukro covers 2,075 square kilometers  among rolling hills and plains.\nYamoussoukro became the legal capital of the Ivory Coast in 1983, although the former capital Abidjan retains several political functions. Prior to 2011, what is now the district of Yamoussoukro was part of Lacs Region. The district was created in 2011 and is split into the departments of Atti\u00e9gouakro and Yamoussoukro. In total, the district contains 169 settlements. Yamoussoukro is a sub-prefecture in Yamoussoukro Department and is also a commune: since 2012, the city of Yamoussoukro has been the sole commune in the autonomous district of Yamoussoukro.",
         "coordinates": "(6.816666667, -5.266667)",
-        "currency": ""
+        "currency": "XOF"
     },
     {
         "capital": "Zagreb",
@@ -319,7 +319,7 @@
         "country": "Czechia",
         "description": "Prague  is the capital and largest city in the Czech Republic, and the historical capital of Bohemia. On the Vltava river, Prague is home to about 1.3 million people. The city has a temperate oceanic climate, with relatively warm summers and chilly winters. \nPrague is a political, cultural, and economic hub of central Europe, with a rich history and Romanesque, Gothic, Renaissance and Baroque architectures. It was the capital of the Kingdom of Bohemia and residence of several Holy Roman Emperors, most notably Charles IV .It was an important city to the Habsburg monarchy and Austro-Hungarian Empire. The city played major roles in the Bohemian and the Protestant Reformations, the Thirty Years' War and in 20th-century history as the capital of Czechoslovakia between the World Wars and the post-war Communist era.Prague is home to a number of well-known cultural attractions, many of which survived the violence and destruction of 20th-century Europe. Main attractions include Prague Castle, Charles Bridge, Old Town Square with the Prague astronomical clock, the Jewish Quarter, Pet\u0159\u00edn hill and Vy\u0161ehrad. Since 1992, the historic center of Prague has been included in the UNESCO list of World Heritage Sites.\nThe city has more than ten major museums, along with numerous theaters, galleries, cinemas, and other historical exhibits. An extensive modern public transportation system connects the city. It is home to a wide range of public and private schools, including Charles University in Prague, the oldest university in Central Europe.Prague is classified as an \"Alpha-\" global city according to GaWC studies. In 2019, the city was ranked as 69th most livable city in the world by Mercer. In the same year, the PICSA Index ranked the city as 13th most livable city in the world. Its rich history makes it a popular tourist destination and as of 2017, the city receives more than 8.5 million international visitors annually. In 2017, Prague was listed as the fifth most visited European city after London, Paris, Rome, and Istanbul.",
         "coordinates": "(50.08333333, 14.466667)",
-        "currency": ""
+        "currency": "CZK"
     },
     {
         "capital": "Copenhagen",
@@ -354,7 +354,7 @@
         "country": "East Timor",
         "description": "Dili  is the capital and largest city of East Timor. It lies on the northern coast of the island of Timor, in a small area of flat land hemmed in by mountains. The climate is tropical, with distinct wet and dry seasons. The city has served as the economic hub and chief port of what is now East Timor since its designation as the capital of Portuguese Timor in 1769. It also serves as the capital of the Dili Municipality, which includes some rural subdivisions in addition to the urban ones which make up the city itself. Dili's growing population is relatively youthful, being mostly of working age. The local language is Tetum, however residents include many internal migrants from other areas of the country.\nThe initial settlement was situated in what is now the old quarter in the eastern side of the city. Centuries of Portuguese rule were interrupted in World War II, when Dili became the site of a battle between Allied and Japanese forces. The damaged city returned to Portuguese control following the war. In 1975, a civil war between Timorese political parties broke out, leading to a declaration of independence and a subsequent invasion by Indonesia. Under Indonesian rule infrastructure in the city was developed, with landmarks such as the Immaculate Conception Cathedral and Cristo Rei of Dili being built during this time. The city expanded as its population grew to over 100,000 people.\nResistance to Indonesian rule faced violent repression, and a massacre in Dili led to international pressure culminating in an independence referendum. Following a vote for independence violence erupted in the city, destroying huge amounts of its infrastructure and leading to an exodus of refugees. A period of United Nations rule followed, during which international agencies began the reconstruction of the city. Dili became the capital of an independent East Timor in 2002. A period of violence in 2006 saw another period of infrastructure damage and population displacement. In 2009 the government launched the City of Peace campaign to reduce tensions. As the population has continued to grow and the original site of the city has filled up, the urban area has expanded into coastal areas to the east and west of the main city.\nInfrastructure in Dili continues to be developed. The city was the first location in East Timor to see 24 hours of electricity, although its water infrastructure remains relatively limited. Education levels are higher than the national average, and the country's universities are located in the city. An international port and airport lie within the city limits. Most economic activity comes from the tertiary sector and public employment. To further build the economy, the government is developing the tourism potential of the city, focusing on cultural, environmental, and historical attractions.",
         "coordinates": "(-8.583333333, 125.6)",
-        "currency": ""
+        "currency": "USD"
     },
     {
         "capital": "Quito",
@@ -379,10 +379,10 @@
     },
     {
         "capital": "London",
-        "country": "England",
+        "country": "United Kingdom",
         "description": "London is the capital and largest city of England and the United Kingdom, with a population of just under 9 million. It stands on the River Thames in south-east England at the head of a 50-mile  estuary down to the North Sea, and has been a major settlement for two millennia. The City of London, its ancient core and financial centre, was founded by the Romans as Londinium and retains boundaries close to its medieval ones. The City of Westminster, to the west of the City of London, has for centuries hosted the national government and parliament.  Since the 19th century, the name \"London\" has also referred to the metropolis around this core, historically split between the counties of Middlesex, Essex, Surrey, Kent, and Hertfordshire, which largely comprises Greater London, governed by the Greater London Authority.As one of the world's major global cities, London exerts a strong influence on its arts, entertainment, fashion, commerce and finance, education, health care, media, science and technology, tourism, and transport and communications. Its GDP  makes it the largest urban economy in Europe, and it is one of the major financial centres in the world. With Europe's largest concentration of higher education institutions, it is home to some of the highest-ranked academic institutions in the world\u2014Imperial College London in natural and applied sciences, the London School of Economics in social sciences, and the comprehensive University College London. London has the busiest city airport system in the world and the London Underground is the oldest rapid transit system in the world. London is one of the most-visited cities in the world and is home to the most 5-star hotels of any city.London's diverse cultures encompass over 300 languages. The mid-2018 population of Greater London of about 9 million made it Europe's third-most populous city, accounting for 13.4% of the population of the United Kingdom and over 16% of the population of England. The Greater London Built-up Area is the fourth-most populous in Europe with about 9.8 million inhabitants at the 2011 census. The London metropolitan area is the third-most populous in Europe with about 14 million inhabitants in 2016, granting London the status of a megacity.\nLondon has four World Heritage Sites: the Tower of London; Kew Gardens; the combined Palace of Westminster, Westminster Abbey, and St Margaret's Church; and also the historic settlement in Greenwich, where the Royal Observatory, Greenwich defines the prime meridian  and Greenwich Mean Time. Other landmarks include Buckingham Palace, the London Eye, Piccadilly Circus, St Paul's Cathedral, Tower Bridge, and Trafalgar Square. London has many museums, galleries, libraries and cultural venues, including the British Museum, National Gallery, Natural History Museum, Tate Modern, British Library, and numerous West End theatres. Important sporting events held in London include the FA Cup Final , Wimbledon Tennis Championships and the London Marathon. In 2012, London became the first city to host three Summer Olympic Games.",
         "coordinates": "(51.5, -0.083333)",
-        "currency": ""
+        "currency": "GBP"
     },
     {
         "capital": "Malabo",
@@ -406,11 +406,11 @@
         "currency": "EUR"
     },
     {
-        "capital": "",
-        "country": "Eswatini Mbabane",
+        "capital": "Mbabane",
+        "country": "Eswatini",
         "description": "Mbabane  is a city in Eswatini , and is one of the two capitals , serving as the executive capital.\nWith an estimated population of 94,874 , it is located on the Mbabane River and its tributary the Polinjane River in the Mdzimba Mountains. It is located in the Hhohho Region, of which it is also the capital. The average elevation of the city is 1,243 meters. It lies on the MR3 road.\n\n",
-        "coordinates": "",
-        "currency": ""
+        "coordinates": "(-26.31666667, 31.133333)",
+        "currency": "SZL"
     },
     {
         "capital": "Addis Ababa",
@@ -421,10 +421,10 @@
     },
     {
         "capital": "Palikir",
-        "country": "Federated States of Micronesia",
+        "country": "Micronesia",
         "description": "Palikir  is the capital city of the Federated States of Micronesia located in the western Pacific Ocean. A town of slightly under 5,000 residents, it is part of the larger Sokehs municipality, which had a population of 6,647 as of 2010, out of the nation's total population of 106,487. It is situated on the northwest side of Pohnpei island , a high volcanic island surrounded by a fringing coral reef. Nearby to the northeast is the island's largest settlement, the coastal town of Kolonia. It was declared the capital of Micronesia in 1989.",
         "coordinates": "(6.916666667, 158.15)",
-        "currency": ""
+        "currency": "USD"
     },
     {
         "capital": "Suva",
@@ -841,10 +841,10 @@
     },
     {
         "capital": "Nay Pyi Taw",
-        "country": "Myanmar (Burma)",
+        "country": "Myanmar",
         "description": "Naypyidaw International Airport officially spelled Nay Pyi Taw , , is located 16 kilometres  southeast of Naypyidaw, the capital of Myanmar. Before the foundation of Naypyidaw, this was referred to as the airport of the nearby town of Lewe. The airport officially opened on 19 December 2011.",
-        "coordinates": "",
-        "currency": ""
+        "coordinates": "(16.8, 96.15)",
+        "currency": "MMK"
     },
     {
         "capital": "Windhoek",
@@ -907,21 +907,14 @@
         "country": "North Korea",
         "description": "Pyongyang  is the capital and largest city of North Korea, where it is known as the \"Capital of the Revolution\". Pyongyang is located on the Taedong River about 109 km  upstream from its mouth on the Yellow Sea. According to the 2008 population census, it has a population of 3,255,288. Pyongyang is a directly administered city  with equal status to North Korean provinces.\nPyongyang is one of the oldest cities in Korea. It was the capital of two ancient Korean kingdoms, Gojoseon and Goguryeo, and served as the secondary capital of Goryeo. Much of the city was destroyed during the First Sino-Japanese War, but it was revived under Japanese rule and became an industrial center. Following the establishment of North Korea in 1948, Pyongyang became its de facto capital. The city was again devastated during the Korean War, but was quickly rebuilt after the war with Soviet assistance.\nPyongyang is the political, industrial and transport center of North Korea. It is home to North Korea's major government institutions, as well as the ruling Workers' Party of Korea which has its headquarters in the Forbidden City.\n\n",
         "coordinates": "(39.01666667, 125.75)",
-        "currency": ""
+        "currency": "KPW"
     },
     {
         "capital": "Skopje",
         "country": "North Macedonia",
         "description": "Skopje  is the capital and largest city of North Macedonia. It is the country's political, cultural, economic, and academic centre.\nThe territory of Skopje has been inhabited since at least 4000 BC; remains of Neolithic settlements have been found within the old Kale Fortress that overlooks the modern city centre. Originally a Paeonian city, Scupi became the capital of Dardania in the second century BC. On the eve of the 1st century AD, the settlement was seized by the Romans and became a military camp. When the Roman Empire was divided into eastern and western halves in 395 AD, Scupi came under Byzantine rule from Constantinople. During much of the early medieval period, the town was contested between the Byzantines and the Bulgarian Empire, whose capital it was between 972 and 992.\nFrom 1282, the town was part of the Serbian Empire, and acted as its capital city from 1346 to 1371. In 1392, Skopje was conquered by the Ottoman Turks, who called it \u00dcsk\u00fcb . The town stayed under Ottoman control for over 500 years, serving as the capital of the pashasanjak of \u00dcsk\u00fcp and later the Vilayet of Kosovo. In 1912, it was annexed by the Kingdom of Serbia during the Balkan Wars. During the First World War the city was seized by the Kingdom of Bulgaria, and, after the war, it became part of the newly formed Kingdom of Yugoslavia as the capital of Vardarska Banovina. In the Second World War the city was again captured by Bulgaria and in 1945 became the capital of SR Macedonia, a federated state within the Yugoslavia. The city developed rapidly, but this was interrupted in 1963 when it was hit by a disastrous earthquake.\nSkopje is on the upper course of the Vardar River, and is on a major north\u2013south Balkan route between Belgrade and Athens. It is a centre for metal-processing, chemical, timber, textile, leather, and printing industries. Industrial development of the city has been accompanied by development of the trade, logistics, and banking sectors, as well as an emphasis on the fields of transportation, culture and sport. According to the last official census from 2021, Skopje had a population of 422,540 inhabitants in its urban area and 526,502 in ten municipalities that form the city and, beside Skopje, include many other less urbanized and rural settlements some of which are 20 km  away from the city itself or even border the neighbouring Kosovo.",
         "coordinates": "(42, 21.433333)",
-        "currency": ""
-    },
-    {
-        "capital": "Belfast",
-        "country": "Northern Ireland",
-        "description": "Belfast  is the capital and largest city of Northern Ireland, standing on the banks of the River Lagan on the east coast. It is the 12th-largest city in the United Kingdom and the second-largest in Ireland. It had a population of 345,418 in 2021.By the early 19th century, Belfast was a major port. It played an important role in the Industrial Revolution in Ireland, becoming briefly the biggest linen-producer in the world, earning it the nickname \"Linenopolis\". By the time it was granted city status in 1888, it was a major centre of Irish linen production, tobacco-processing and rope-making. Shipbuilding was also a key industry; the Harland and Wolff shipyard, which built the RMS Titanic, was the world's largest shipyard. Belfast as of 2019 has a major aerospace and missiles industry. Industrialisation, and the inward migration it brought, made Belfast Northern Ireland's biggest city. Following the partition of Ireland in 1921, Belfast became the seat of government for Northern Ireland. Belfast's status as a global industrial centre ended in the decades after the Second World War. Belfast suffered greatly during the violence that accompanied the partition of Ireland, and especially during the more recent conflict known as the Troubles.\nBelfast is still a port with commercial and industrial docks, including the Harland and Wolff shipyard, dominating the Belfast Lough shoreline. It is served by two airports: George Best Belfast City Airport, 3 miles  from the city centre, and Belfast International Airport 15 miles  west of the city. The Globalization and World Cities Research Network  listed Belfast as a Gamma + global city in 2020.",
-        "coordinates": "",
-        "currency": ""
+        "currency": "MKD"
     },
     {
         "capital": "Oslo",
@@ -956,7 +949,7 @@
         "country": "Palestine",
         "description": "The status of Jerusalem is disputed in both international law and diplomatic practice, with both the Israelis and Palestinians claiming Jerusalem as their capital city. The dispute has been described as \"one of the most intractable issues in the Israeli\u2013Palestinian conflict\", with conflicting claims to sovereignty over the city or parts of it, and access to its holy sites. The main dispute revolves around the legal status of East Jerusalem and especially the Old City of Jerusalem, while broader agreement exists regarding future Israeli presence in West Jerusalem in accordance with Israel's internationally recognised borders.The majority of United Nations  member states hold the view that the final status of Jerusalem should be resolved through negotiation, and have therefore favored locating their embassies in Tel Aviv prior to a final status agreement. In the late 2010s, the international consensus to abstain from expressing a viewpoint on the city's final status has shown signs of fragility, with Russia, the United States, and Australia adopting new policy positions. Furthermore, the proposal that Jerusalem should be the future capital of both Israel and Palestine has also gained international support, with endorsements coming from both the United Nations and the European Union.",
         "coordinates": "(31.76666667, 35.233333)",
-        "currency": ""
+        "currency": "ILS"
     },
     {
         "capital": "Panama City",
@@ -1083,13 +1076,6 @@
         "description": "Riyadh , formerly known as Hajr al-Yamamah, is the capital and largest city of Saudi Arabia. It is also the capital of the Riyadh Province and the centre of the Riyadh Governorate.\nIt is the largest city on the Arabian Peninsula, and is situated in the center of the an-Nafud desert, on the eastern part of the Najd plateau. The city sits at an average of 600 meters  above sea level, and receives around 5 million tourists each year, making it the forty-ninth most visited city in the world and the 6th in the Middle East. Riyadh had a population of 7.6 million people in 2019, making it the most-populous city in Saudi Arabia, 3rd most populous in the Middle East, and 38th most populous in Asia.The first mentioning of the city by the name Riyadh was in 1590, by an early Arab chronicler. In 1737, Deham Ibn Dawwas, who was from the neighboring Manfuha, settled in and took control of the city. Deham built a wall around the city, and the best-known source of the name Riyadh is from this period, thought to be referring to the earlier oasis towns that predated the wall built by Ibn Dawwas. In 1744, Muhammad ibn 'Abd al-Wahhab formed an alliance with the Emir of Diriyah, Muhammad bin Saud, and they took Riyadh from Deham. However their state, now known as the First Saudi State, came to a collapse in 1818. Turki ibn Abdullah founded the Second Saudi State in the early 19th century and made Riyadh his capital in 1825. However, his reign over the city was disrupted by a joint Ottoman\u2013Rashidi alliance. Finally, in the early 20th century, 'Abdulaziz ibn Saud, known in the west simply as Ibn Saud, retrieved his ancestral kingdom of Najd in 1902 and consolidated his rule by 1926 with the final Saudi conquest of Hejaz, subsequently naming his kingdom 'Saudi Arabia' in September 1932 with Riyadh as the capital.Riyadh is the political and administrative center of Saudi Arabia. The Consultative Assembly , the Council of Ministers, the King and the Supreme Judicial Council are all situated in the city. Alongside these four bodies that form the core of the legal system of Saudi Arabia, the headquarters of other major and minor governmental bodies are also located in Riyadh. The city hosts 114 foreign embassies, most of which are located in the Diplomatic Quarter in the western reaches of the city.\nRiyadh also holds great economic significance, as it hosts the headquarters of many banks and major companies, such as the Saudi National Bank , Al-Rajhi Bank, SABIC, Almarai, STC, and Samba Financial Group. Highway 65, known locally as the King Fahd Road, runs through some of these important centers in the city, including the King Abdullah Financial District, one of the world's largest financial districts, the Faisaliyah Center and the Kingdom Center. Riyadh is one of the world's fastest-growing cities in population and is home to many expatriates. Riyadh has been designated a global city.The city is divided into 15 municipal districts, which are overseen by the Municipality of Riyadh  headed by the mayor; and the Royal Commission for Riyadh which is chaired by the Governor of the Province, Faisal bin Bandar Al Saud. As of July 2020, the mayor is Faisal bin Abdulaziz bin Mohammed bin Ayyaf Al-Muqrin.",
         "coordinates": "(24.65, 46.7)",
         "currency": "SAR"
-    },
-    {
-        "capital": "Edinburgh",
-        "country": "Scotland",
-        "description": "Edinburgh  is the capital city of Scotland and one of its 32 council areas. Historically part of the county of Midlothian , it is located in Lothian on the southern shore of the Firth of Forth. Edinburgh is Scotland's second-most populous city, after Glasgow, and the seventh-most populous city in the United Kingdom.\nRecognised as the capital of Scotland since at least the 15th century, Edinburgh is the seat of the Scottish Government, the Scottish Parliament and the highest courts in Scotland. The city's Palace of Holyroodhouse is the official residence of the British monarchy in Scotland. The city has long been a centre of education, particularly in the fields of medicine, Scottish law, literature, philosophy, the sciences, and engineering. It is the second-largest financial centre in the United Kingdom, and the city's historical and cultural attractions have made it the UK's second-most visited tourist destination attracting 4.9 million visits, including 2.4 million from overseas in 2018. Time Out magazine rated Edinburgh the best city in the world in 2022.Edinburgh's official population estimates are \n506,520  for the locality, 518,500  for the City of Edinburgh council area, which takes in some outlying villages in the western part of its territory, and 1,384,950  for the wider Edinburgh and South East Scotland city region which also includes East Lothian, Fife, Midlothian, the Scottish Borders and West Lothian.The city is the annual venue of the General Assembly of the Church of Scotland. It is home to national cultural institutions such as the National Museum of Scotland, the National Library of Scotland and the Scottish National Gallery. The University of Edinburgh, founded in 1582 and now one of three in the city, is considered one of the best research institutions in the world, most recently placing 15th in the QS World University Rankings for 2023. The city is also known for the Edinburgh International Festival and the Fringe, the latter being the world's largest annual international arts festival. Historic sites in Edinburgh include Edinburgh Castle, the Palace of Holyroodhouse, the churches of St. Giles, Greyfriars and the Canongate, and the extensive Georgian New Town built in the 18th/19th centuries. Edinburgh's Old Town and New Town together are listed as a UNESCO World Heritage Site, which has been managed by Edinburgh World Heritage since 1999.",
-        "coordinates": "",
-        "currency": ""
     },
     {
         "capital": "Dakar",
@@ -1358,11 +1344,11 @@
         "currency": "VUV"
     },
     {
-        "capital": "Vatican City",
-        "country": "Vatican City",
+        "capital": "Vatican",
+        "country": "Vatican",
         "description": "Women account for approximately 5.5% of the citizenry of Vatican City. According to the Herald Sun in March 2011, there were only 32 females out of 572 citizens issued with Vatican passports. One of them was a nun. In 2013, Worldcrunch reported that there were around 30 women who were citizens of Vatican City, including two South American women, two Poles, and three from Switzerland. The majority of Vatican women at the time were from Italy.",
-        "coordinates": "(41.9, 12.45)",
-        "currency": ""
+        "coordinates": "",
+        "currency": "EUR"
     },
     {
         "capital": "Caracas",
@@ -1377,13 +1363,6 @@
         "description": "Hanoi  is the capital city of Vietnam. It covers an area of 3,359.82 km2 . The second largest city in Vietnam consists of 12 urban districts, one district-leveled town and 17 rural districts. Located within the Red River Delta, Hanoi is the cultural and political centre of Vietnam.\nHanoi traced its history back to the third century BCE, when a portion of the modern-day city served as the capital of the historic Vietnamese nation of \u00c2u L\u1ea1c. Following the collapse of \u00c2u L\u1ea1c, the city was part of Han China. In 1010, Vietnamese emperor L\u00fd Th\u00e1i T\u1ed5 established the capital of the imperial Vietnamese nation \u0110\u1ea1i Vi\u1ec7t in modern-day central Hanoi, naming the city Th\u0103ng Long . Th\u0103ng Long remained \u0110\u1ea1i Vi\u1ec7t's political centre until 1802, when the Nguy\u1ec5n dynasty, the last imperial Vietnamese dynasty, moved the capital to Hu\u1ebf. The city was renamed Hanoi in 1831, and served as the capital of French Indochina from 1902 to 1945. On 6 January 1946, the National Assembly of the Democratic Republic of Vietnam designated Hanoi as the capital of the newly independent country, which would last during the First Indochina War  and the Vietnam War . Hanoi has been the capital of the Socialist Republic of Vietnam since 1976.\nA major tourist destination in Vietnam, Hanoi offers well-preserved French colonial architecture, many religious sites , several historical landmarks of Vietnamese imperial periods, and a large number of museums. The Central Sector of the Imperial Citadel of Th\u0103ng Long in Ba Dinh District was recognized as a UNESCO World Heritage Site in 2010. \nHanoi has a Human Development Index of 0.799 , ranking first among all municipalities and provinces of Vietnam. The city hosts various venerable educational institutions and cultural venues of significance, including the Vietnam National University, the M\u1ef9 \u0110\u00ecnh National Stadium, and the Vietnam National Museum of Fine Arts. Hanoi was the only Asia-Pacific locality to be granted the \"City for Peace\" title by the UNESCO on 16 July 1999, recognizing its contributions to the struggle for peace, its efforts to promote equality in the community, protect the environment, promote culture and education, and care for younger generations. Hanoi joined UNESCO's Network of Creative Cities as a Design City on 31 October 2019, on the occasion of World Cities' Day. The city has also hosted numerous international events, including APEC Vietnam 2006, 132nd Assembly of the Inter-Parliamentary Union , 2019 North Korea\u2013United States Hanoi Summit, as well as 2009 Asian Indoor Games, and the Southeast Asian Games in 2003 and 2021.",
         "coordinates": "(21.03333333, 105.85)",
         "currency": "VND"
-    },
-    {
-        "capital": "Cardiff",
-        "country": "Wales",
-        "description": "The current capital of Wales is Cardiff. Historically, Wales did not have a definite capital. In 1955, the Minister for Welsh Affairs informally proclaimed Cardiff to be the capital of Wales. Since 1964, Cardiff has been home to government offices for Wales, and since 1999 it has been the seat of the Senedd.",
-        "coordinates": "",
-        "currency": ""
     },
     {
         "capital": "Sanaa",

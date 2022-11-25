@@ -169,7 +169,7 @@
       "iso3": "SRB"
     },
     {
-      "name": "Timor-Leste",
+      "name": "East Timor",
       "currency": "USD",
       "iso2": "TL",
       "iso3": "TLS"
@@ -397,7 +397,7 @@
       "iso3": "PRI"
     },
     {
-      "name": "Palestinian Territory",
+      "name": "Palestine",
       "currency": "ILS",
       "iso2": "PS",
       "iso3": "PSE"
@@ -655,7 +655,7 @@
       "iso3": "MHL"
     },
     {
-      "name": "Macedonia",
+      "name": "North Macedonia",
       "currency": "MKD",
       "iso2": "MK",
       "iso3": "MKD"
@@ -949,7 +949,7 @@
       "iso3": "COD"
     },
     {
-      "name": "Czech Republic",
+      "name": "Czechia",
       "currency": "CZK",
       "iso2": "CZ",
       "iso3": "CZE"
@@ -1081,7 +1081,7 @@
       "iso3": "SVN"
     },
     {
-      "name": "Korea North",
+      "name": "North Korea",
       "currency": "KPW",
       "iso2": "KP",
       "iso3": "PRK"
@@ -1370,7 +1370,7 @@
     },
     {
       "name": "Antigua and Barbuda",
-      "currency": "XCD",
+      "currency": "",
       "iso2": "AG",
       "iso3": "ATG"
     },
