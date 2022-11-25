@@ -57,6 +57,17 @@ public class CommentController{
         }
         return commentList;
     }
+
+    @GetMapping(path="/allforuser")
+    public @ResponseBody Iterable<Comment> getCommentsForUser(@RequestParam String sessionToken){
+
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if(queryUser.size()>0){
+            return commentRepository.findByUser(queryUser.get(0));
+        }
+        return new ArrayList<Comment>();
+    }
+
     //Posters
     @PostMapping(path="/addbyuser")
     public @ResponseBody ResponseEntity<String> addCommentToCapitalNew(@RequestBody CommentPOSTdto comment){
@@ -111,7 +122,7 @@ public class CommentController{
             return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
         }
         List<Comment> queryComments = commentRepository.findByUserAndCapital(queryUser.get(0), queryCapital.get(0));
-        if(queryCapital.size() != 0){
+        if(queryComments.size() != 0){
             Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_attraction, rating_general, rating_transport);
             commentRepository.save(newComment);
             return new ResponseEntity<>("Comment added", HttpStatus.OK);

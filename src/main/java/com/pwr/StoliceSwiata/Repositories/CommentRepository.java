@@ -14,4 +14,8 @@ public interface CommentRepository extends CrudRepository<Comment, Integer> {
     public List<Comment> findById(int id);
     public List<Comment> findByUserAndCapital(User user, Capital capital);
 
+    List<Comment> findByUser(User user);
+
+
+
 }
