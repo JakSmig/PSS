@@ -40,6 +40,7 @@ public class VisitStatusController {
 
         return new ResponseEntity(queryStatus.get(0).getStatus(), HttpStatus.OK);
     }
+    //@GetMapping
 
     @PostMapping()
     public @ResponseBody ResponseEntity changeStatusForCapital(@RequestParam String capitalName, @RequestParam String sessionToken, @RequestParam Status status){
