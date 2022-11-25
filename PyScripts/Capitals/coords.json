@@ -408,7 +408,7 @@
         "Continent Name": "Central America"
     },
     {
-        "Country Name": "Cote d’Ivoire",
+        "Country Name": "Ivory Coast",
         "Capital Name": "Yamoussoukro",
         "Capital Latitude": 6.816666667,
         "Capital Longitude": -5.266667,
@@ -448,7 +448,7 @@
         "Continent Name": "Europe"
     },
     {
-        "Country Name": "Czech Republic",
+        "Country Name": "Czechia",
         "Capital Name": "Prague",
         "Capital Latitude": 50.08333333,
         "Capital Longitude": 14.466667,
@@ -1000,7 +1000,7 @@
         "Continent Name": "Asia"
     },
     {
-        "Country Name": "Macedonia",
+        "Country Name": "North Macedonia",
         "Capital Name": "Skopje",
         "Capital Latitude": 42,
         "Capital Longitude": 21.433333,
@@ -1736,7 +1736,7 @@
         "Continent Name": "Africa"
     },
     {
-        "Country Name": "Timor-Leste",
+        "Country Name": "East Timor",
         "Capital Name": "Dili",
         "Capital Latitude": -8.583333333,
         "Capital Longitude": 125.6,
