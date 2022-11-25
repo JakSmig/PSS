@@ -75,10 +75,8 @@ public class CommentController{
         User user = queryUser.get(0);
 
         List<Comment> queryComments = commentRepository.findByUserAndCapital(user, capital);
-        System.out.println(comment.image);
-        System.out.println(comment.image.getValue());
 
-        if(queryCapital.size() != 0){
+        if(queryComments.size() != 0){
             Comment newComment = new Comment(user, capital, comment.c_text, comment.rating_food, comment.rating_attraction, comment.rating_general, comment.rating_transport);
             if(!comment.image.getValue().equals("")){
                 newComment.setImageLocation(imagesRepository.save(comment.image));
