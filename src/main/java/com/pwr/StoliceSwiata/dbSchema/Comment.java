@@ -1,9 +1,12 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -41,6 +44,10 @@ public class Comment {
 
     @Column
     private Integer likeRatio;
+
+//    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    private List<Likes> likes;
 
     @OneToOne
     private Images image;

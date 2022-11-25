@@ -143,6 +143,8 @@ public class JsonLoader {
                                                                             comment.getFloat("rating_general"));
             if(response.getStatusCode() == HttpStatus.OK){
                 addedCounter++;
+            }else{
+                System.out.println(response.getBody());
             }
         }
         System.out.println("{LOCAL DATA LOADING}      Added " + String.valueOf(addedCounter) + " comments to the database");
@@ -155,12 +157,12 @@ public class JsonLoader {
         commentIter.forEach(commentList::add);
 
         //hardcoded
-        System.out.println(commentController.changeLikeValueInComment(commentList.get(0).getId(), userList.get(3).getSessiontoken(), 1).getBody());
+        System.out.println(commentController.changeLikeValueInComment(commentList.get(0).getId(), userList.get(2).getSessiontoken(), 1).getBody());
         System.out.println(commentController.changeLikeValueInComment(commentList.get(0).getId(), userList.get(2).getSessiontoken(), 1).getBody());
         System.out.println(commentController.changeLikeValueInComment(commentList.get(0).getId(), userList.get(1).getSessiontoken(), -1).getBody());
         System.out.println(commentController.changeLikeValueInComment(commentList.get(1).getId(), userList.get(0).getSessiontoken(), -1).getBody());
         System.out.println(commentController.changeLikeValueInComment(commentList.get(1).getId(), userList.get(2).getSessiontoken(), -1).getBody());
-        System.out.println(commentController.changeLikeValueInComment(commentList.get(1).getId(), userList.get(3).getSessiontoken(), -1).getBody());
+        System.out.println(commentController.changeLikeValueInComment(commentList.get(1).getId(), userList.get(2).getSessiontoken(), -1).getBody());
 
         System.out.println("{LOCAL DATA LOADING}      Likes generated");
 

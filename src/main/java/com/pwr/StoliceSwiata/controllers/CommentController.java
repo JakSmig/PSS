@@ -87,7 +87,7 @@ public class CommentController{
 
         List<Comment> queryComments = commentRepository.findByUserAndCapital(user, capital);
 
-        if(queryComments.size() != 0){
+        if(queryComments.size() == 0){
             Comment newComment = new Comment(user, capital, comment.c_text, comment.rating_food, comment.rating_attraction, comment.rating_general, comment.rating_transport);
             if(!comment.image.getValue().equals("")){
                 newComment.setImageLocation(imagesRepository.save(comment.image));
@@ -122,7 +122,7 @@ public class CommentController{
             return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
         }
         List<Comment> queryComments = commentRepository.findByUserAndCapital(queryUser.get(0), queryCapital.get(0));
-        if(queryComments.size() != 0){
+        if(queryComments.size() == 0){
             Comment newComment = new Comment(queryUser.get(0), queryCapital.get(0), text, rating_food, rating_attraction, rating_general, rating_transport);
             commentRepository.save(newComment);
             return new ResponseEntity<>("Comment added", HttpStatus.OK);
@@ -173,4 +173,17 @@ public class CommentController{
         }
     }
 
+    @DeleteMapping(path = "/delete")
+    public @ResponseBody ResponseEntity deleteCommentBySessionAndCapitalName(@RequestParam String sessionToken, String capitalName){
+        List<Capital> queryCapital = capitalRepository.findByName(capitalName);
+        if(queryCapital.size() == 0) {
+            return new ResponseEntity<String>("No capital", HttpStatus.BAD_REQUEST);
+        }
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if(queryUser.size() == 0) {
+            return new ResponseEntity<String>("No User with this token", HttpStatus.BAD_REQUEST);
+        }
+        Long resp = commentRepository.deleteByUserAndCapital(queryUser.get(0), queryCapital.get(0));
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
 }

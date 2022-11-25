@@ -16,6 +16,7 @@ public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
     List<Comment> findByUser(User user);
 
-
+    @Transactional
+    Long deleteByUserAndCapital(User user, Capital capital);
 
 }
