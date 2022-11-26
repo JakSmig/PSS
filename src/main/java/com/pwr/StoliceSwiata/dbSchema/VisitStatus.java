@@ -38,4 +38,8 @@ public class VisitStatus {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public String getCapitalName() {
+        return capital.getName();
+    }
 }

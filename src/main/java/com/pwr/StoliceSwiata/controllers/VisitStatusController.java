@@ -31,16 +31,33 @@ public class VisitStatusController {
     @GetMapping
     public @ResponseBody ResponseEntity getStatusForCapital(@RequestParam String capitalName, @RequestParam String sessionToken){
         //TODO add checkers
-        Capital queryCapital = capitalRepository.findByName(capitalName).get(0);
-        User user = userRepository.findBySessiontoken(sessionToken).get(0);
-        List<VisitStatus> queryStatus = visitStatusRepository.findByCapitalAndUser(queryCapital, user);
+        List<Capital> queryCapital = capitalRepository.findByName(capitalName);
+        if(queryCapital.size()==0){
+            return new ResponseEntity("No such capital", HttpStatus.BAD_REQUEST);
+        }
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if(queryUser.size()==0){
+            return new ResponseEntity("No such user", HttpStatus.BAD_REQUEST);
+        }
+
+        List<VisitStatus> queryStatus = visitStatusRepository.findByCapitalAndUser(queryCapital.get(0), queryUser.get(0));
         if (queryStatus.size() == 0){
             return new ResponseEntity<>(Status.UNDEFINED, HttpStatus.OK);
         }
 
-        return new ResponseEntity(queryStatus.get(0).getStatus(), HttpStatus.OK);
+        return new ResponseEntity<>(queryStatus.get(0).getStatus(), HttpStatus.OK);
     }
-    //@GetMapping
+    @GetMapping(path="/foruser")
+    public @ResponseBody ResponseEntity getStatusesForUser(@RequestParam String sessionToken, @RequestParam Status status){
+
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if(queryUser.size()==0){
+            return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+        }
+        //List<VisitStatus> queryStatuses = visitStatusRepository.findByUserAndStatus(queryUser.get(0), status);
+        return new ResponseEntity<>(visitStatusRepository.findByUserAndStatus(queryUser.get(0), status), HttpStatus.OK);
+
+    }
 
     @PostMapping()
     public @ResponseBody ResponseEntity changeStatusForCapital(@RequestParam String capitalName, @RequestParam String sessionToken, @RequestParam Status status){
