@@ -4,7 +4,6 @@ import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
 import com.pwr.StoliceSwiata.dbSchema.Capital;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.Images;
-import com.pwr.StoliceSwiata.dbSchema.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,10 +58,10 @@ public class CapitalController {
             float com_size = comments.size();
             if(com_size>0){
                 for(Comment comment : comments){
-                    r_food_sum += comment.getRating_food();
-                    r_transport_sum += comment.getRating_transport();
-                    r_attractions_sum += comment.getRating_attraction();
-                    r_general_sum += comment.getRating_general();
+                    r_food_sum += comment.getRatingFood();
+                    r_transport_sum += comment.getRatingTransport();
+                    r_attractions_sum += comment.getRatingAttraction();
+                    r_general_sum += comment.getRatingGeneral();
                 }
                 r_food_sum /= com_size;
                 r_transport_sum /= com_size;

@@ -1,12 +1,9 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
 public class Comment {
@@ -31,16 +28,16 @@ public class Comment {
     private Timestamp creationTime;
 
     @Column
-    private Float rating_food;
+    private Float ratingFood;
 
     @Column
-    private Float rating_transport;
+    private Float ratingTransport;
 
     @Column
-    private Float rating_attraction;
+    private Float ratingAttraction;
 
     @Column
-    private Float rating_general;
+    private Float ratingGeneral;
 
     @Column
     private Integer likeRatio;
@@ -58,14 +55,14 @@ public class Comment {
     public Comment(){
 
     }
-    public Comment(User user, Capital capital, String text, float rating_food, float rating_attraction, float rating_general, float rating_transport){
+    public Comment(User user, Capital capital, String text, float ratingFood, float ratingAttraction, float ratingGeneral, float ratingTransport){
         this.user = user;
         this.capital = capital;
         this.cText = text;
-        this.rating_food = rating_food;
-        this.rating_attraction = rating_attraction;
-        this.rating_general = rating_general;
-        this.rating_transport = rating_transport;
+        this.ratingFood = ratingFood;
+        this.ratingAttraction = ratingAttraction;
+        this.ratingGeneral = ratingGeneral;
+        this.ratingTransport = ratingTransport;
         this.likeRatio = 0;
     }
     public Integer getId() {
@@ -90,36 +87,36 @@ public class Comment {
         return creationTime;
     }
 
-    public Float getRating_food() {
-        return rating_food;
+    public Float getRatingFood() {
+        return ratingFood;
     }
 
-    public void setRating_food(Float rating_food) {
-        this.rating_food = rating_food;
+    public void setRatingFood(Float ratingFood) {
+        this.ratingFood = ratingFood;
     }
 
-    public Float getRating_transport() {
-        return rating_transport;
+    public Float getRatingTransport() {
+        return ratingTransport;
     }
 
-    public void setRating_transport(Float rating_transport) {
-        this.rating_transport = rating_transport;
+    public void setRatingTransport(Float ratingTransport) {
+        this.ratingTransport = ratingTransport;
     }
 
-    public Float getRating_attraction() {
-        return rating_attraction;
+    public Float getRatingAttraction() {
+        return ratingAttraction;
     }
 
-    public void setRating_attraction(Float rating_attraction) {
-        this.rating_attraction = rating_attraction;
+    public void setRatingAttraction(Float ratingAttraction) {
+        this.ratingAttraction = ratingAttraction;
     }
 
-    public Float getRating_general() {
-        return rating_general;
+    public Float getRatingGeneral() {
+        return ratingGeneral;
     }
 
-    public void setRating_general(Float rating_general) {
-        this.rating_general = rating_general;
+    public void setRatingGeneral(Float ratingGeneral) {
+        this.ratingGeneral = ratingGeneral;
     }
 
     public Integer getLikeRatio() {

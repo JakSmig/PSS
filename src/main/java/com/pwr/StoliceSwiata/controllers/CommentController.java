@@ -40,7 +40,7 @@ public class CommentController{
     //Getters
     @GetMapping(path="/allforcapital")
     public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName, String optionalSessionToken, String optionalSort, Boolean reverse_sort){
-        String[] ALLOWED_SORTS = {"creationTime", "likeRatio", "rating_general"};
+        String[] ALLOWED_SORTS = {"creationTime", "likeRatio", "ratingGeneral"};
         List<Capital> queryCapital = capitalRepository.findByName(capitalName);
         if(queryCapital.size() == 0) {
             return new ArrayList<Comment>();
