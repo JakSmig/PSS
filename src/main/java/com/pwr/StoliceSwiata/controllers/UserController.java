@@ -1,6 +1,8 @@
 package com.pwr.StoliceSwiata.controllers;
 
+import com.pwr.StoliceSwiata.Repositories.AvatarRepository;
 import com.pwr.StoliceSwiata.Repositories.UserRepository;
+import com.pwr.StoliceSwiata.dbSchema.Avatar;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import com.pwr.StoliceSwiata.dbSchema.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @Controller
@@ -19,6 +22,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AvatarRepository avatarRepository;
 
     // Check on frontend?
     @PostMapping(path = "/add")
@@ -33,20 +39,8 @@ public class UserController {
         userRepository.save(newUser);
         return  loginUser(email, password);
     }
-    @PutMapping(path = "/changetoadmin")
-    public @ResponseBody ResponseEntity<String>changeToAdmin(@RequestParam String sessionToken){
-        List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
-        if(queryResult.size() == 1) {
-            User user = queryResult.get(0);
-            user.setRole(UserRole.ADMIN);
-            userRepository.save(user);
-            return new ResponseEntity("privlages changed", HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 
+    //TODO change to put with dedicated dto
     @PostMapping(path = "/update")
     public @ResponseBody ResponseEntity<String> updateUser(@RequestParam String sessionToken,
                                                            @RequestParam String newUsername,
@@ -100,9 +94,39 @@ public class UserController {
         }
 
     }
+    @PutMapping(path="changeavatar")
+    public @ResponseBody ResponseEntity<String> changeAvatar(@RequestParam String sessionToken, @RequestParam int avatarId){
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if (queryUser.size() == 0){
+            return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+        }
+        Optional<Avatar> queryAvatar = avatarRepository.findById(avatarId);
+        if(queryAvatar.isEmpty()){
+            return new ResponseEntity<>("No such avatar", HttpStatus.BAD_REQUEST);
+        }
+        User user = queryUser.get(0);
+        user.setAvatar(queryAvatar.get());
+        userRepository.save(user);
+        return new ResponseEntity<>("Avatar changed", HttpStatus.OK);
 
 
-    @PostMapping(path="/login")
+    }
+
+    @PutMapping(path = "/changetoadmin")
+    public @ResponseBody ResponseEntity<String>changeToAdmin(@RequestParam String sessionToken){
+        List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
+        if(queryResult.size() == 1) {
+            User user = queryResult.get(0);
+            user.setRole(UserRole.ADMIN);
+            userRepository.save(user);
+            return new ResponseEntity("privlages changed", HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(path="/login")
     public @ResponseBody ResponseEntity<String> loginUser(@RequestParam String email, @RequestParam String password) {
         System.out.println("login: " + email + "  " + password);
         List<User> queryResult = userRepository.findByEmailAndPassword(email, password);
@@ -125,7 +149,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/logout")
+    @PutMapping("/logout")
     public @ResponseBody ResponseEntity<String> logoutUser(@RequestParam String sessionToken){
         List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
         if(queryResult.size() == 1){

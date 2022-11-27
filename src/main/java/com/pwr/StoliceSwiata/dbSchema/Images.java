@@ -12,7 +12,8 @@ public class Images {
     @Column
     private String filename;
 
-    @Column(length = 1000000)
+    @Lob
+    @Column(columnDefinition = "CLOB")
     private String value;
 
     public Images(){}

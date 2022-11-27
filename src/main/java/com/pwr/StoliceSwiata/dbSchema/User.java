@@ -17,6 +17,9 @@ public class User {
     private UserRole role;
     private String sessiontoken;
 
+    @ManyToOne
+    private Avatar avatar;
+
     public User(){
 
     }
@@ -71,5 +74,13 @@ public class User {
 
     public void setSessiontoken(String sessiontoken) {
         this.sessiontoken = sessiontoken;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
     }
 }
