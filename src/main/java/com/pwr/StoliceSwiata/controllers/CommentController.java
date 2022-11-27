@@ -7,12 +7,14 @@ import com.pwr.StoliceSwiata.dbSchema.Likes;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import com.pwr.StoliceSwiata.DTOs.CommentPOSTdto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,15 +39,28 @@ public class CommentController{
 
     //Getters
     @GetMapping(path="/allforcapital")
-    public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName, String optionalSessionToken){
+    public @ResponseBody Iterable<Comment> getCommentsForCapital(@RequestParam String capitalName, String optionalSessionToken, String optionalSort, Boolean reverse_sort){
+        String[] ALLOWED_SORTS = {"creationTime", "likeRatio", "rating_general"};
         List<Capital> queryCapital = capitalRepository.findByName(capitalName);
         if(queryCapital.size() == 0) {
             return new ArrayList<Comment>();
         }
-        List<Comment> commentList = commentRepository.findByCapital(queryCapital.get(0));
-        if(optionalSessionToken != null){
+        List<Comment> commentList = null;
+        if(optionalSort != null && Arrays.asList(ALLOWED_SORTS).contains(optionalSort)) {
+            reverse_sort = reverse_sort != null && (reverse_sort);
+            if(reverse_sort){
+                commentList = commentRepository.findByCapital(queryCapital.get(0), Sort.by(Sort.Direction.ASC, optionalSort));
+            }else{
+                commentList = commentRepository.findByCapital(queryCapital.get(0), Sort.by(Sort.Direction.DESC, optionalSort));
+            }
+
+        }else{
+            commentList = commentRepository.findByCapital(queryCapital.get(0));
+        }
+
+        if (optionalSessionToken != null) {
             List<User> queryUser = userRepository.findBySessiontoken(optionalSessionToken);
-            if(queryUser.size()>0){
+            if (queryUser.size() > 0) {
                 User mUser = queryUser.get(0);
                 for (Comment comment : commentList) {
                     List<Likes> queryLikes = likesRepository.findByCommentAndUser(comment, mUser);
