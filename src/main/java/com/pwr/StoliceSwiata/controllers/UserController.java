@@ -2,6 +2,7 @@ package com.pwr.StoliceSwiata.controllers;
 
 import com.pwr.StoliceSwiata.Repositories.UserRepository;
 import com.pwr.StoliceSwiata.dbSchema.User;
+import com.pwr.StoliceSwiata.dbSchema.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +29,22 @@ public class UserController {
         if(userRepository.findByUsername(username).size()>0){
             return new ResponseEntity<String>("User already exists", HttpStatus.CONFLICT);
         }
-        User newUser = new User(username, password, email);
-        //newUser.setUsername(username);
-        //newUser.setPassword(password);
-        //newUser.setEmail(email);
+        User newUser = new User(username, password, email, UserRole.NORMALUSER);
         userRepository.save(newUser);
-        return  loginUser(email, password); //new ResponseEntity<String>("User added", HttpStatus.OK);
+        return  loginUser(email, password);
+    }
+    @PutMapping(path = "/changetoadmin")
+    public @ResponseBody ResponseEntity<String>changeToAdmin(@RequestParam String sessionToken){
+        List<User> queryResult = userRepository.findBySessiontoken(sessionToken);
+        if(queryResult.size() == 1) {
+            User user = queryResult.get(0);
+            user.setRole(UserRole.ADMIN);
+            userRepository.save(user);
+            return new ResponseEntity("privlages changed", HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(path = "/update")

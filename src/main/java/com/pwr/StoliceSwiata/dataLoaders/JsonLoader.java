@@ -10,6 +10,7 @@ import com.pwr.StoliceSwiata.controllers.UserController;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.Images;
 import com.pwr.StoliceSwiata.dbSchema.User;
+import com.pwr.StoliceSwiata.dbSchema.enums.UserRole;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;

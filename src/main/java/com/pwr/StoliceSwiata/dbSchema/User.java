@@ -1,5 +1,7 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
+import com.pwr.StoliceSwiata.dbSchema.enums.UserRole;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,15 +13,18 @@ public class User {
     private String username;
     private String password;
     private String email;
+
+    private UserRole role;
     private String sessiontoken;
 
     public User(){
 
     }
-    public User(String username, String password, String email){
+    public User(String username, String password, String email, UserRole role){
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
         this.sessiontoken = "";
     }
 
@@ -50,6 +55,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public String getSessiontoken() {
