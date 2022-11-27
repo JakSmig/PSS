@@ -13,5 +13,15 @@ public class Avatar {
     @Column(columnDefinition = "CLOB")
     private String value;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

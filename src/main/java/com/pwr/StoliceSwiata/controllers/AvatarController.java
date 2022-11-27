@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -17,8 +18,10 @@ public class AvatarController {
     @Autowired
     private AvatarRepository avatarRepository;
 
-    @GetMapping
-    public Iterable<Avatar> getAllAvatars(){
-        return  avatarRepository.findAll();
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Avatar> getAllAvatars(){
+        List<Avatar> queryAvatars = avatarRepository.findAll();
+        System.out.println(queryAvatars);
+        return queryAvatars;
     }
 }

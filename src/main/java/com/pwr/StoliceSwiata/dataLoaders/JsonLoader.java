@@ -1,12 +1,10 @@
 package com.pwr.StoliceSwiata.dataLoaders;
 
-import com.pwr.StoliceSwiata.Repositories.CapitalRepository;
-import com.pwr.StoliceSwiata.Repositories.CommentRepository;
-import com.pwr.StoliceSwiata.Repositories.ImagesRepository;
-import com.pwr.StoliceSwiata.Repositories.UserRepository;
+import com.pwr.StoliceSwiata.Repositories.*;
 import com.pwr.StoliceSwiata.controllers.CapitalController;
 import com.pwr.StoliceSwiata.controllers.CommentController;
 import com.pwr.StoliceSwiata.controllers.UserController;
+import com.pwr.StoliceSwiata.dbSchema.Avatar;
 import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.Images;
 import com.pwr.StoliceSwiata.dbSchema.User;
@@ -52,10 +50,13 @@ public class JsonLoader {
     private CommentRepository commentRepository;
     @Autowired
     private ImagesRepository imagesRepository;
+    @Autowired
+    private AvatarRepository avatarRepository;
 
 
     public void loadDataFromJSONs(){
         loadDataToCapitals(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/fullcapdata.json")),extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/flags.json")));
+        loadDataToAvatars(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/avatars.json")));
         loadDataToUsers(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/userDataInit.json")));
         loadCommentsAndLikesFromJson(extractJSONArrayFromResource(loadResourceWithResourceLoader("classpath:data/commentTestData.json")));
     }
@@ -127,6 +128,23 @@ public class JsonLoader {
         }
         System.out.println("{LOCAL DATA LOADING}      Added " + String.valueOf(addedCounter) + " users to the database");
 
+    }
+    private void loadDataToAvatars(JSONArray usersArray){
+        System.out.println("{LOCAL DATA LOADING}      Loading avatars data");
+        int addedCounter = 0;
+        for (int i = 0; i < usersArray.length(); i++){
+            JSONObject avatarJson = usersArray.getJSONObject(i);
+            List<Avatar> queryAvatar = avatarRepository.findByValue(avatarJson.getString("value"));
+            if(queryAvatar.size() == 0){
+                Avatar avatar = new Avatar();
+                avatar.setValue(avatarJson.getString("value"));
+                addedCounter++;
+                avatarRepository.save(avatar);
+            }
+
+
+        }
+        System.out.println("{LOCAL DATA LOADING}      Added " + String.valueOf(addedCounter) + " Avatars to the database");
     }
 
     private void loadCommentsAndLikesFromJson(JSONArray commentArray){
