@@ -16,6 +16,9 @@ public class Comment {
     @JoinColumn(name = "user")
     private User user;
 
+    @Transient
+    private Avatar userAvatar;
+
     @ManyToOne
     @JoinColumn(name = "capital")
     private Capital capital;
@@ -52,6 +55,8 @@ public class Comment {
     @Transient
     public int likedByCurrentUser;
 
+
+
     public Comment(){
 
     }
@@ -71,6 +76,7 @@ public class Comment {
     public String getUser() {
         return user.getUsername();
     }
+    public Avatar getUserAvatar(){return user.getAvatar();}
     public String getCapital() {
         return capital.getName();
     }
