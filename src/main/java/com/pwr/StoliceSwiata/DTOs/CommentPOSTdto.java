@@ -6,9 +6,9 @@ public class CommentPOSTdto {
     public String sessionId;
     public String capitalName;
     public String c_text;
-    public float rating_food;
-    public float rating_transport;
-    public float rating_attraction;
-    public float rating_general;
+    public float ratingFood;
+    public float ratingTransport;
+    public float ratingAttraction;
+    public float ratingGeneral;
     public Images image;
 }

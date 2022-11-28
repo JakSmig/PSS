@@ -103,7 +103,7 @@ public class CommentController{
         List<Comment> queryComments = commentRepository.findByUserAndCapital(user, capital);
 
         if(queryComments.size() == 0){
-            Comment newComment = new Comment(user, capital, comment.c_text, comment.rating_food, comment.rating_attraction, comment.rating_general, comment.rating_transport);
+            Comment newComment = new Comment(user, capital, comment.c_text, comment.ratingFood, comment.ratingAttraction, comment.ratingGeneral, comment.ratingTransport);
             if(!comment.image.getValue().equals("")){
                 newComment.setImageLocation(imagesRepository.save(comment.image));
             }
