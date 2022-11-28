@@ -28,7 +28,7 @@ public class UserController {
 
     // Check on frontend?
     @PostMapping(path = "/add")
-    public @ResponseBody ResponseEntity<String> addUser(@RequestBody String username, @RequestBody String password, @RequestBody String email){
+    public @ResponseBody ResponseEntity<String> addUser(@RequestParam String username, @RequestParam String password, @RequestParam String email){
         if(userRepository.findByEmail(email).size()>0){
             return new ResponseEntity<String>("Email already used", HttpStatus.CONFLICT);
         }
