@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface CapitalRepository extends CrudRepository<Capital, Integer> {
     List<Capital> findByCountry(String country);
     List<Capital> findByName(String name);
-
     @Transactional
     Long deleteByName(String name);
 

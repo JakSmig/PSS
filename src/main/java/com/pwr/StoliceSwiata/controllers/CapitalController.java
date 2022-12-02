@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,23 @@ public class CapitalController {
         else {
             return new ResponseEntity<String>("No such capital", HttpStatus.BAD_REQUEST);
         }
+
+    }
+
+    @GetMapping(path = "/photos")
+    public @ResponseBody ResponseEntity getAllImagesFromCommentsForCapital(@RequestParam String capitalName){
+        List<Capital> queryResult = capitalRepository.findByName(capitalName);
+        if(queryResult.size() == 0) {
+            return new ResponseEntity<String>("No such capital", HttpStatus.BAD_REQUEST);
+        }
+        List<Comment> comments = queryResult.get(0).getCommentList();
+        ArrayList<Images> imageList = new ArrayList<>();
+        for(Comment comment : comments){
+            if(comment.getImageLocation() != null){
+                imageList.add(comment.getImageLocation());
+            }
+        }
+        return new ResponseEntity<List<Images>>(imageList, HttpStatus.OK);
 
     }
 
