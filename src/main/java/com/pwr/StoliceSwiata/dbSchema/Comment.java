@@ -76,6 +76,11 @@ public class Comment {
     public String getUser() {
         return user.getUsername();
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Avatar getUserAvatar(){return user.getAvatar();}
     public String getCapital() {
         return capital.getName();

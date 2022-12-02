@@ -1,8 +1,10 @@
 package com.pwr.StoliceSwiata.controllers;
 
 import com.pwr.StoliceSwiata.Repositories.AvatarRepository;
+import com.pwr.StoliceSwiata.Repositories.CommentRepository;
 import com.pwr.StoliceSwiata.Repositories.UserRepository;
 import com.pwr.StoliceSwiata.dbSchema.Avatar;
+import com.pwr.StoliceSwiata.dbSchema.Comment;
 import com.pwr.StoliceSwiata.dbSchema.User;
 import com.pwr.StoliceSwiata.dbSchema.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ public class UserController {
 
     @Autowired
     private AvatarRepository avatarRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
 
     // Check on frontend?
     @PostMapping(path = "/add")
@@ -159,5 +165,25 @@ public class UserController {
             return new ResponseEntity<String>("User logged out", HttpStatus.OK);
         }
         return new ResponseEntity<String>("User not logged in", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping()
+    public @ResponseBody ResponseEntity deleteUser(@RequestParam String sessionToken){
+        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+        if(queryUser.size() == 0) {
+            return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+        }
+        User user = queryUser.get(0);
+        User deleteUser = userRepository.findByUsername("[Deleted]").get(0);
+        List<Comment> userComments = commentRepository.findByUser(user);
+
+        for(Comment comment : userComments){
+            comment.setUser(deleteUser);
+            commentRepository.save(comment);
+        }
+
+
+        userRepository.delete(user);
+        return new ResponseEntity("User deleted", HttpStatus.OK);
     }
 }

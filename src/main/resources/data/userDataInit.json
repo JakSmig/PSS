@@ -18,5 +18,10 @@
     "username": "TestUserWithReallyLongNameDunnoIfIShouldPutAConstrainOnThis -Also some other random sings !@#$%^&*()",
     "password": "pass",
     "email": "Test4@t.pl"
+  },
+  {
+    "username": "[Deleted]",
+    "password": "deletePass",
+    "email": "del@us.pl"
   }
 ]
