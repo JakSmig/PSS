@@ -1,5 +1,6 @@
 package com.pwr.StoliceSwiata.dbSchema;
 
+import com.pwr.StoliceSwiata.dbSchema.enums.CommentStatus;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -45,6 +46,9 @@ public class Comment {
     @Column
     private Integer likeRatio;
 
+    @Column
+    private CommentStatus commentStatus;
+
 //    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    private List<Likes> likes;
@@ -58,7 +62,7 @@ public class Comment {
 
 
     public Comment(){
-
+        this.commentStatus = CommentStatus.ACTIVE;
     }
     public Comment(User user, Capital capital, String text, float ratingFood, float ratingAttraction, float ratingGeneral, float ratingTransport){
         this.user = user;
@@ -69,6 +73,7 @@ public class Comment {
         this.ratingGeneral = ratingGeneral;
         this.ratingTransport = ratingTransport;
         this.likeRatio = 0;
+        this.commentStatus = CommentStatus.ACTIVE;
     }
     public Integer getId() {
         return id;
@@ -148,5 +153,13 @@ public class Comment {
 
     public void setLikedByCurrentUser(int likedByCurrentUser) {
         this.likedByCurrentUser = likedByCurrentUser;
+    }
+
+    public CommentStatus getCommentStatus() {
+        return commentStatus;
+    }
+
+    public void setCommentStatus(CommentStatus commentStatus) {
+        this.commentStatus = commentStatus;
     }
 }
