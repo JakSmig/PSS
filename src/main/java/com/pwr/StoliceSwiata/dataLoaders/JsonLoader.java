@@ -21,10 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +59,8 @@ public class JsonLoader {
     }
     private JSONArray extractJSONArrayFromResource(Resource resource){
         try{
-            File jsonAsFile = resource.getFile();
-            JSONTokener tokener = new JSONTokener(new FileReader(jsonAsFile));
+            InputStream jsonAsFile = resource.getInputStream();
+            JSONTokener tokener = new JSONTokener(new InputStreamReader(jsonAsFile));
             return new JSONArray(tokener);
         }
         catch (IOException | NullPointerException e) {
@@ -75,8 +72,10 @@ public class JsonLoader {
     }
 
     private Resource loadResourceWithResourceLoader(String path) {
-
         Resource a = resourceLoader.getResource(path);
+        if(!a.exists()){
+            System.out.println("Resource is null");
+        }
         return resourceLoader.getResource(path);
     }
 
