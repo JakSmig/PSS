@@ -1,0 +1,4 @@
+1. docker network crate springboot-mysql-net
+2. docker run --name mysqldb --network springboot-mysql-net -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=capitalcities -e MYSQL_USER=sa MYSQL_PASSWORD=1234 -d mysql:5.7
+3. docker build -t be .
+4. docker run --network springboot-mysql-net --name becont -p 8080:8080 -d be
