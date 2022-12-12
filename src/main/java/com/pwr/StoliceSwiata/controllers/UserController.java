@@ -168,12 +168,23 @@ public class UserController {
     }
 
     @DeleteMapping()
-    public @ResponseBody ResponseEntity deleteUser(@RequestParam String sessionToken){
-        List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
-        if(queryUser.size() == 0) {
-            return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+    public @ResponseBody ResponseEntity deleteUser(@RequestParam String sessionToken, int optionalUserID){
+        User user = null;
+        if(optionalUserID != 0){
+            Optional<User> queryUser = userRepository.findById(optionalUserID);
+            if(queryUser.isPresent()){
+                user = queryUser.get();
+            }else{
+                return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+            }
+        }else{
+            List<User> queryUser = userRepository.findBySessiontoken(sessionToken);
+            if(queryUser.size() == 0) {
+                return new ResponseEntity<>("No such user", HttpStatus.BAD_REQUEST);
+            }
+            user = queryUser.get(0);
         }
-        User user = queryUser.get(0);
+
         User deleteUser = userRepository.findByUsername("[Deleted]").get(0);
         List<Comment> userComments = commentRepository.findByUser(user);
 
