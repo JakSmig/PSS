@@ -3,8 +3,9 @@ import { Space } from 'antd';
 import { Map } from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import { useMapEvents } from 'react-leaflet';
+import { useQuery } from 'react-query';
 
-import { useCapitals } from '../../api/Overpass';
+import { getCapitalsInBounds } from '../../api/capital';
 import { CapitalMarker } from './CapitalMarker';
 
 interface Props {
@@ -20,10 +21,10 @@ const PlaceMarkers = ({ zoom, center }: Omit<Props, 'boundsCoordinates'>) => {
     zoom,
   });
 
-  const { data, isLoading } = useCapitals(
-    mapData.boundsCoordinates,
-    mapData.zoom,
-  );
+  const capitals = useQuery({
+    queryKey: ['mapBounds', mapData.boundsCoordinates],
+    queryFn: getCapitalsInBounds,
+  });
 
   const setMapPositionDebounce = (map: Map) => {
     const mapBound = map.getBounds();
@@ -50,29 +51,48 @@ const PlaceMarkers = ({ zoom, center }: Omit<Props, 'boundsCoordinates'>) => {
 
     setMapPositionDebounce(mapp);
   }, [currentCenter, mapp]);
-
+  const [sLat, sLng, nLat, nLng] = mapData.boundsCoordinates
+    .substring(1, mapData.boundsCoordinates.length - 1)
+    .split(',')
+    .map(Number);
+  const filteredCapitals = capitals.data?.filter(e => {
+    const [lat, lng] = e.coordenates
+      .substring(1, e.coordenates.length - 1)
+      .split(',')
+      .map(Number);
+    return lat > sLat && lat < nLat && lng < nLng && lng > sLng;
+  });
   return (
     <>
-      {isLoading ? (
-        <Space style={{height: "100vh",
-        width: "100%",
-        alignItems: "center",
-        justifyContent :"center",
-        position : "absolute",
-        zIndex: '9999'}}
-          
+      {capitals.isLoading ? (
+        <Space
+          style={{
+            height: '100vh',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'absolute',
+            zIndex: '9999',
+          }}
         >
-          <LoadingOutlined style={{fontSize: "50px"}}/> 
+          <LoadingOutlined style={{ fontSize: '50px' }} />
         </Space>
       ) : (
-        data?.map(capital => (
-          <CapitalMarker
-            key={capital.id}
-            name={capital.tags['name:en']}
-            lat={capital.lat}
-            lon={capital.lon}
-          />
-        ))
+        filteredCapitals?.map(capital => {
+          const [lat, lng] = capital.coordenates
+            .substring(1, capital.coordenates.length - 1)
+            .split(',')
+            .map(Number);
+          return (
+            <CapitalMarker
+              key={capital.id}
+              name={capital.name}
+              lat={lat}
+              lon={lng}
+              zoom={mapData.zoom}
+            />
+          );
+        })
       )}
     </>
   );

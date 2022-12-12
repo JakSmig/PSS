@@ -1,8 +1,9 @@
+import 'leaflet/dist/leaflet.css';
+import './MapPage.css';
+
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 
-import 'leaflet/dist/leaflet.css';
-import './MapPage.css';
 import { PlaceMarkers } from './PlaceMarkers';
 const initialZoom = 10;
 

@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import shallow from "zustand/shallow";
+import { useEffect } from 'react';
+import { useQuery } from 'react-query';
+import shallow from 'zustand/shallow';
 
-import { User, useStore } from "./useStore";
+import { getUser } from '../api/user';
+import { useAuthStore } from '../store/authStore';
 
 export const useCurrentUser = () => {
-  const { token, user, setUser } = useStore(
-    (state) => ({ token: state.token, user: state.user, setUser: state.setUser }),
-    shallow
+  const { token, setUser } = useAuthStore(
+    state => ({ token: state.token, user: state.user, setUser: state.setUser }),
+    shallow,
   );
 
-  useEffect(() => {
-    (async () => {
-      if (token) {
-        const fetchedUser = await axios.get<User>(
-          `http://localhost:8080/user/get/bysession?sessionToken=${token}`
-        );
-        if (fetchedUser.data) {
-          setUser(fetchedUser.data);
-        }
-      }
-    })();
-  }, []);
+  const query = useQuery({
+    queryKey: ['currentUser', token],
+    queryFn: () => getUser(token as string),
+    enabled: !!token,
+    cacheTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
+  });
 
-  return {
-    user,
-  };
+  useEffect(() => {
+    if (query.data?.data) {
+      setUser(query.data.data);
+    }
+  }, [query.data, setUser]);
+
+  return query;
 };

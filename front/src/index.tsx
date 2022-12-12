@@ -1,23 +1,27 @@
+import './index.less';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HomePage } from './pages/HomePage/HomePage';
-import { Paths } from './enums';
+
+import App from './App';
+import { Paths } from './lib/enums';
+import { AdminPage } from './pages/AdminPanel/AdminPage';
 import { CapitalPage } from './pages/CapitalPage/CapitalPage';
+import { HomePage } from './pages/HomePage/HomePage';
 import { MapPage } from './pages/MapPage/MapPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
+import reportWebVitals from './reportWebVitals';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
+
 root.render(
   <React.StrictMode>
-   <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
@@ -25,11 +29,12 @@ root.render(
             <Route path={Paths.Map} element={<MapPage />} />
             <Route path={Paths.Capital} element={<CapitalPage />} />
             <Route path={Paths.Profile} element={<ProfilePage />} />
+            <Route path={Paths.Admin} element={<AdminPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

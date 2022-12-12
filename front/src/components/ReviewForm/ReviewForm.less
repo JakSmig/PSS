@@ -1,0 +1,50 @@
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.card {
+  position: absolute;
+  z-index: 4;
+  align-items: center;
+  min-height: 500px;
+  width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.steps-action{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.ant-steps-item-finish .ant-steps-item-icon{
+  background-color: transparent;
+    border-color: var(--clr-primary);
+
+}
+.ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon{
+ color: var(--clr-primary);
+}
+
+.ant-steps-item-process .ant-steps-item-container .ant-steps-item-content .ant-steps-item-title{
+  color: var(--clr-primary);
+}
+.ant-steps-item-wait .ant-steps-item-container .ant-steps-item-content .ant-steps-item-title{
+  color: #c1c1c1;
+}
+.ant-steps-item-wait .ant-steps-item-container .ant-steps-item-content .ant-steps-item-title::after {
+  background-color: #c1c1c1;
+}
+.ant-steps-item-process .ant-steps-item-container .ant-steps-item-content .ant-steps-item-title::after {
+  background-color: #c1c1c1;
+}
+.ant-steps-item-wait .ant-steps-item-icon {
+  background-color: transparent;
+}

@@ -1,0 +1,70 @@
+
+@import "~antd/dist/antd.variable.less";
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+:root{
+  --clr-one: green;
+  --clr-hover: #1b4d3d;
+  --clr-primary: #1DA57A;
+  --clr-link-active: green;
+
+  --clr-layout: #1DA57A;
+  --clr-menu-bg: #fff;
+  --clr-menu-item: #000;
+
+  --clr-bg: #fafafa;
+  
+  --clr-input-color: #000;
+  
+  --clr-button-color: #fff;
+}
+
+[data-theme="dark"]{
+  --clr-one: pink;
+  --clr-switch: #DA627D;
+  --clr-hover: #007EA7;
+  --clr-primary: #77b0f2;
+  --clr-link-active: white;
+
+  --clr-layout: #2e1b40;
+  --clr-menu-bg: #452861;
+
+  --clr-menu-item: #fff;
+
+  --clr-bg: #c1c1c1;
+  --clr-input-color: #000;
+  --clr-button-color: #000;
+}
+
+@primary-color: var(--clr-primary);
+@layout-body-background: var( --clr-menu-bg);
+@layout-sider-background: var(--clr-layout);
+@comment-bg: var(--clr-menu-bg);
+@comment-author-name-color: var(--clr-menu-item);
+@comment-action-color:var(--clr-menu-item);
+@menu-bg: var(--clr-menu-bg);
+@menu-item-color: var(--clr-menu-item);
+@text-color:var(--clr-menu-item);
+@steps-background:var(--clr-primary);
+@steps-icon: var(--clr-menu-item);
+@input-color: var(--clr-input-color);
+@steps-item-title: var(--clr-menu-item);
+@upload-actions-color: var(--clr-primary);
+@btn-default-bg:  var(--clr-bg);
+@btn-primary-color: var(--clr-button-color);
+// @steps-nav-arrow-color: var(--clr-primary);
+@label-color: var(--clr-menu-item);
+@link-color: var(--clr-primary);
+@link-active-color: var(--clr-link-active);
+@link-hover-color: var(--clr-hover);
+
+html, body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#root {
+  flex: 1;
+}

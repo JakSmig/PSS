@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 
-import { OverpassCapital } from '../models/Capital';
-import { generateCacheKey } from '../utils/generateCacheKey';
-import { overpassClient } from './client';
+import { overpassClient } from '../lib/axios';
+import { generateCacheKey } from '../lib/generateCacheKey';
+import { OverpassCapital } from '../lib/types';
 
 const useCapitals = (coordinates: string, zoom: number) => {
   const query = `

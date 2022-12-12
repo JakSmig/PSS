@@ -1,24 +1,18 @@
-import { Outlet } from "react-router-dom";
-import "./App.less";
-import { Navbar } from "./components/Navbar/Navbar";
-import { useStore } from "./hooks/useStore";
-import {useEffect} from 'react'
+import { Layout } from 'antd';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+
+import { Navbar } from './components/Navbar/Navbar';
+import { useCurrentUser } from './hooks/useCurrentUser';
 
 function App() {
-  const setToken = useStore(state => state.setToken);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      (setToken(token));
-    }
-  }, [setToken]);
+  useCurrentUser();
 
   return (
-    <>
+    <Layout style={{ height: '100%', display: 'flex' }}>
       <Navbar />
       <Outlet />
-    </>
+    </Layout>
   );
 }
 
